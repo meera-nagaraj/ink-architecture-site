@@ -1,0 +1,992 @@
+<!--
+  Hallmark · genre: editorial · macrostructure: Portfolio Grid · theme: custom (architectural — limestone/stone/clay)
+  nav: N9 edge-aligned · footer: Ft1 mast-headed · enrichment: none (typographic hero + designed drawing-plates)
+  pre-emit critique: P5 H5 E4 S5 R5 V4
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>INK Architecture — Master planning, architecture & interiors</title>
+<meta name="description" content="INK is a Bangalore master planning, architecture and interior design practice working across South India — from 500-acre master plans to corporate interiors.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============ TOKENS ============ */
+:root{
+  /* type */
+  --font-display:"Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-body:"Jost", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:"Jost", ui-sans-serif, system-ui, sans-serif;
+
+  /* architectural palette — OKLCH, anchor hue ~70 (warm stone), clay accent */
+  --color-paper:    oklch(99% 0 0);
+  --color-paper-2:  oklch(96.5% 0 0);
+  --color-rule:     oklch(87% 0 0);
+  --color-neutral:  oklch(52% 0 0);
+  --color-muted:    oklch(38% 0 0);
+  --color-ink:      oklch(16% 0 0);
+  --color-stone:    oklch(18% 0 0);
+  --color-stone-2:  oklch(26% 0 0);
+  --color-stone-rule:oklch(36% 0 0);
+  --color-ink-rev:  oklch(99% 0 0);
+  --color-muted-rev:oklch(72% 0 0);
+  --color-accent:   oklch(28% 0 0);   /* mono: borders / rings */
+  --color-accent-soft: oklch(82% 0 0);  /* light grey on dark */
+  --color-accent-ink: oklch(16% 0 0);   /* near-black text on light */
+  --color-focus:    oklch(30% 0 0);
+  --wa-green:#25D366;
+  --wa-green-dark:#1da851;
+
+  /* spacing (4pt) */
+  --space-2xs:.25rem; --space-xs:.5rem; --space-sm:.75rem; --space-md:1rem;
+  --space-lg:1.5rem; --space-xl:2.5rem; --space-2xl:4rem; --space-3xl:6rem; --space-4xl:9rem;
+
+  /* type scale (1.25) */
+  --text-xs:.75rem; --text-sm:.85rem; --text-base:1rem; --text-md:1.15rem;
+  --text-lg:1.45rem; --text-xl:1.85rem; --text-2xl:2.45rem; --text-3xl:3.1rem;
+  --text-display:clamp(2.75rem, 6vw + 1rem, 5.25rem);
+
+  --page-gutter:clamp(1.25rem, 5vw, 5rem);
+  --measure:65ch;
+  --rule-hair:1px;
+
+  --ease-out:cubic-bezier(0.16,1,0.3,1);
+  --ease-in:cubic-bezier(0.7,0,0.84,0);
+  --ease-in-out:cubic-bezier(0.65,0,0.35,1);
+  --dur-micro:120ms; --dur-short:220ms; --dur-long:440ms;
+
+  --z-sticky:200;
+}
+
+/* ============ BASE ============ */
+*{box-sizing:border-box;}
+html{overflow-x:clip; -webkit-text-size-adjust:100%; scroll-behavior:smooth;}
+body{
+  overflow-x:clip; margin:0;
+  background:var(--color-paper); color:var(--color-ink);
+  font-family:var(--font-body); font-size:var(--text-base); font-weight:400;
+  line-height:1.6; letter-spacing:-0.002em;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
+h1,h2,h3{font-family:var(--font-display); font-weight:400; line-height:1.06; letter-spacing:-0.02em; margin:0;}
+p{margin:0;}
+a{color:inherit; text-decoration:none;}
+img{display:block; max-width:100%;}
+::selection{background:var(--color-accent); color:var(--color-ink-rev);}
+:focus-visible{outline:2px solid var(--color-focus); outline-offset:3px; border-radius:2px;}
+
+.mono{font-family:var(--font-mono); font-weight:400; font-variant-numeric:tabular-nums;}
+.muted{color:var(--color-muted);}
+.kicker{
+  font-family:var(--font-mono); font-size:var(--text-xs); font-weight:400;
+  letter-spacing:0.18em; text-transform:uppercase; color:var(--color-accent-ink);
+}
+.wrap{max-width:1320px; margin-inline:auto; padding-inline:var(--page-gutter);}
+
+/* ============ NAV — N9 edge-aligned ============ */
+.nav{
+  position:fixed; inset:0 0 auto 0; z-index:var(--z-sticky);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:var(--space-sm) var(--page-gutter);
+  background:var(--color-stone);
+  transition:background-color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out), padding var(--dur-short) var(--ease-out);
+  border-bottom:var(--rule-hair) solid var(--color-stone-rule);
+}
+.nav.is-stuck{background:color-mix(in oklch, var(--color-paper) 88%, transparent); backdrop-filter:blur(8px); border-bottom-color:var(--color-rule);}
+.nav__brand{display:flex; align-items:center;}
+.nav__logo{height:52px; width:auto; display:block; filter:invert(1); transition:filter var(--dur-short) var(--ease-out);}
+.nav.is-stuck .nav__logo{filter:none;}
+.nav__right{display:flex; align-items:center; gap:var(--space-xl);}
+.nav__links{display:flex; gap:var(--space-lg); list-style:none; margin:0; padding:0;}
+.nav__links a{
+  font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.1em; text-transform:uppercase;
+  color:#fff; transition:color var(--dur-micro) var(--ease-out);
+}
+.nav.is-stuck .nav__links a{color:var(--color-muted);}
+.nav__links a:hover{color:var(--color-accent-soft);}
+.nav__cta{
+  font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.1em; text-transform:uppercase;
+  white-space:nowrap; color:#fff;
+  border:var(--rule-hair) solid rgba(255,255,255,.55); border-radius:999px;
+  padding:.55rem 1.1rem; transition:border-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out);
+}
+.nav.is-stuck .nav__cta{color:var(--color-ink); border-color:var(--color-rule);}
+.nav__cta:hover{border-color:var(--color-accent); color:var(--color-accent-ink);}
+@media (max-width:760px){.nav__links{display:none;}}
+
+/* ============ HERO — full-bleed image + typographic overlay ============ */
+.hero{
+  position:relative; isolation:isolate;
+  background:var(--color-paper);
+  color:var(--color-ink-rev);
+  min-height:clamp(560px, 92vh, 920px);
+  display:flex; align-items:flex-end;
+  padding:clamp(7rem,14vh,10rem) clamp(1.25rem,3.5vw,3rem) var(--space-3xl);
+  --hero-frame:clamp(1.25rem,3.5vw,3rem);
+  --hero-frame-top:clamp(5.5rem,11vh,7rem);
+}
+/* white frame: image + scrim sit inside an inset, rounded panel — top inset is taller so the photo clears the solid nav bar */
+.hero__frame{position:absolute; inset:var(--hero-frame-top) var(--hero-frame) var(--hero-frame); z-index:-3; overflow:clip; border-radius:3px; background:var(--color-stone);}
+.hero__bg{position:absolute; inset:var(--hero-frame-top) var(--hero-frame) var(--hero-frame); z-index:-2; border-radius:3px; overflow:clip; background-size:cover; background-position:center 40%;
+  transform:scale(1.04); animation:kenburns 28s var(--ease-in-out) infinite alternate; will-change:transform;}
+.hero__scrim{position:absolute; inset:var(--hero-frame-top) var(--hero-frame) var(--hero-frame); z-index:-1; pointer-events:none; border-radius:3px;
+  background:
+    radial-gradient(ellipse 74% 60% at 50% 50%, color-mix(in oklch, var(--color-stone) 66%, transparent), transparent 76%),
+    linear-gradient(180deg, color-mix(in oklch, var(--color-stone) 72%, transparent) 0%, transparent 30%, transparent 56%, color-mix(in oklch, var(--color-stone) 88%, transparent) 100%);}
+.hero__scrim::after{content:""; position:absolute; inset:0; opacity:.06;
+  background-image:linear-gradient(var(--color-ink-rev) 1px, transparent 1px), linear-gradient(90deg, var(--color-ink-rev) 1px, transparent 1px);
+  background-size:64px 64px; mask-image:linear-gradient(180deg, transparent, #000 26%, #000 72%, transparent);}
+@keyframes kenburns{from{transform:scale(1.04) translate(0,0);} to{transform:scale(1.13) translate(-1.5%,-1.2%);}}
+.hero__inner{position:relative; z-index:1; width:100%; text-shadow:0 1px 40px rgba(0,0,0,.28);}
+.hero__eyebrow{display:flex; gap:.9rem; align-items:center; margin-bottom:var(--space-xl);}
+.hero__eyebrow .mono{font-size:var(--text-xs); letter-spacing:0.16em; text-transform:uppercase; color:var(--color-muted-rev);}
+.hero h1{
+  font-size:var(--text-display); font-weight:300; letter-spacing:-0.03em; line-height:1.0;
+  max-width:18ch; overflow-wrap:anywhere;
+}
+.hero h1 em{font-style:italic; color:var(--color-accent-soft);}
+.hero__lede{
+  margin-top:var(--space-xl); max-width:54ch; font-size:var(--text-md);
+  color:var(--color-muted-rev); line-height:1.65;
+}
+.hero__stats{
+  margin-top:var(--space-3xl); display:grid; gap:var(--space-md) var(--space-xl);
+  grid-template-columns:repeat(4, minmax(0,1fr));
+  border-top:var(--rule-hair) solid var(--color-stone-rule); padding-top:var(--space-xl);
+}
+.stat__n{font-family:var(--font-display); font-size:var(--text-2xl); font-weight:400; letter-spacing:-0.02em; display:block;}
+.stat__l{font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.08em; text-transform:uppercase; color:var(--color-muted-rev); margin-top:.35rem;}
+@media (max-width:680px){.hero__stats{grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--space-lg);}}
+
+/* ============ INTRO ============ */
+.intro{padding:var(--space-4xl) 0 var(--space-3xl);}
+.intro__grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:var(--space-2xl);}
+.intro__lead{font-family:var(--font-display); font-size:var(--text-xl); font-weight:300; line-height:1.32; letter-spacing:-0.015em; max-width:26ch;}
+.intro__lead em{font-style:italic; color:var(--color-accent-ink);}
+.intro__body{max-width:var(--measure); color:var(--color-muted); font-size:var(--text-md); display:grid; gap:var(--space-md);}
+@media (max-width:860px){.intro__grid{grid-template-columns:1fr; gap:var(--space-xl);}}
+
+/* ============ SECTION HEAD (stacked, single column) ============ */
+.sec-head{display:flex; align-items:flex-end; justify-content:space-between; gap:var(--space-lg); flex-wrap:wrap; margin-bottom:var(--space-xl);}
+.sec-head h2{font-size:calc(var(--text-2xl) * 1.12); font-weight:500; letter-spacing:-0.025em;}
+.sec-head__meta{font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.1em; text-transform:uppercase; color:var(--color-neutral);}
+
+/* ============ WORK — Portfolio Grid ============ */
+.work{padding:var(--space-lg) 0 var(--space-4xl);}
+.filters{display:flex; flex-wrap:wrap; gap:var(--space-xs) var(--space-sm); margin-bottom:var(--space-2xl); border-top:var(--rule-hair) solid var(--color-rule); padding-top:var(--space-lg);}
+.filter{
+  font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.06em; text-transform:uppercase;
+  color:var(--color-muted); background:none; border:var(--rule-hair) solid var(--color-rule);
+  border-radius:999px; padding:.5rem .95rem; cursor:pointer; white-space:nowrap;
+  transition:color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out), background-color var(--dur-micro) var(--ease-out);
+}
+.filter:hover{border-color:var(--color-ink); color:var(--color-ink);}
+.filter[aria-pressed="true"]{background:var(--color-ink); color:var(--color-paper); border-color:var(--color-ink);}
+
+.grid{display:grid; grid-template-columns:repeat(12,1fr); gap:var(--space-xl) var(--space-lg);}
+.card{grid-column:span 4; display:flex; flex-direction:column; transition:opacity var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out);}
+.card.is-hidden{display:none;}
+.card.is-fading{opacity:0; transform:translateY(6px);}
+.card--wide{grid-column:span 8;}
+@media (max-width:980px){.card{grid-column:span 6;} .card--wide{grid-column:span 12;}}
+@media (max-width:620px){.card,.card--wide{grid-column:span 12;}}
+
+/* designed drawing-plate (placeholder for real photography) */
+.plate{
+  position:relative; aspect-ratio:4/3; background:var(--color-stone);
+  overflow:clip; border-radius:2px;
+}
+.plate__img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  transition:transform var(--dur-long) var(--ease-out); transform:scale(1.005);}
+.card:hover .plate__img{transform:scale(1.04);}
+@media (prefers-reduced-motion: reduce){.plate__img,.card:hover .plate__img{transition:none; transform:none;}}
+.card--wide .plate{aspect-ratio:16/9;}
+.plate::after{ /* legibility scrim for overlaid labels */
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(180deg, rgba(0,0,0,.42), rgba(0,0,0,0) 26%, rgba(0,0,0,0) 52%, rgba(0,0,0,.60));
+}
+.plate__img,.plate::after{z-index:0;}
+.plate__idx{z-index:2; position:absolute; top:.9rem; left:1rem; font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.1em; color:var(--color-muted-rev);}
+.plate__type{z-index:2; position:absolute; bottom:1rem; left:1rem; right:1rem; font-family:var(--font-display); font-style:italic; font-size:var(--text-lg); color:var(--color-ink-rev); line-height:1.15;}
+.plate__tag{z-index:2; position:absolute; top:.85rem; right:1rem; font-family:var(--font-mono); font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-paper); background:color-mix(in oklch, var(--color-stone-2) 70%, transparent); border:1px solid var(--color-stone-rule); padding:.2rem .5rem; border-radius:999px;}
+
+.card__meta{padding-top:var(--space-md);}
+.card__title{font-family:var(--font-display); font-size:var(--text-md); font-weight:500; letter-spacing:-0.01em; line-height:1.2;}
+.card__loc{font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.06em; text-transform:uppercase; color:var(--color-accent-ink); margin-top:.4rem;}
+.card__specs{margin-top:var(--space-sm); display:grid; gap:.28rem; border-top:var(--rule-hair) solid var(--color-rule); padding-top:var(--space-sm);}
+.spec{display:flex; gap:.75rem; font-size:var(--text-sm);}
+.spec dt{font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--color-neutral); min-width:5.5rem; flex:none; padding-top:.15rem;}
+.spec dd{margin:0; color:var(--color-ink);}
+
+/* ============ EXPERTISE ============ */
+.exp{background:var(--color-paper-2); padding:var(--space-4xl) 0;}
+.exp__rows{display:grid; gap:0; border-top:var(--rule-hair) solid var(--color-rule);}
+.exp__row{display:grid; grid-template-columns:auto 1fr auto; gap:var(--space-lg) var(--space-2xl); align-items:baseline; padding:var(--space-xl) 0; border-bottom:var(--rule-hair) solid var(--color-rule);}
+.exp__no{font-family:var(--font-mono); font-size:var(--text-sm); color:var(--color-accent-ink);}
+.exp__name{font-family:var(--font-display); font-size:var(--text-xl); font-weight:400; letter-spacing:-0.02em;}
+.exp__desc{color:var(--color-muted); max-width:46ch; font-size:var(--text-base);}
+@media (max-width:760px){.exp__row{grid-template-columns:auto 1fr; gap:var(--space-xs) var(--space-md);} .exp__desc{grid-column:1/-1;}}
+.exp__note{margin-top:var(--space-xl); font-size:var(--text-sm); color:var(--color-neutral); max-width:60ch;}
+
+/* ============ STUDIO ============ */
+.studio{padding:var(--space-4xl) 0;}
+.studio__grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:var(--space-3xl);}
+.studio__lede{font-family:var(--font-display); font-size:var(--text-xl); font-weight:300; line-height:1.32; letter-spacing:-0.015em; max-width:24ch; margin-bottom:var(--space-lg);}
+.studio__body{color:var(--color-muted); font-size:var(--text-md); display:grid; gap:var(--space-md); max-width:var(--measure);}
+.studio__name{font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.12em; text-transform:uppercase; color:var(--color-ink); margin-top:var(--space-lg);}
+.studio__aside{border-left:var(--rule-hair) solid var(--color-rule); padding-left:var(--space-xl);}
+.studio__aside h3{font-family:var(--font-mono); font-weight:400; font-size:var(--text-xs); letter-spacing:0.12em; text-transform:uppercase; color:var(--color-accent-ink); margin-bottom:var(--space-md);}
+.studio__list{list-style:none; margin:0 0 var(--space-xl); padding:0; display:grid; gap:.5rem;}
+.studio__list li{font-size:var(--text-sm); color:var(--color-muted); display:flex; gap:.6rem;}
+.studio__list li::before{content:"—"; color:var(--color-neutral);}
+@media (max-width:860px){.studio__grid{grid-template-columns:1fr; gap:var(--space-2xl);} .studio__aside{border-left:0; border-top:var(--rule-hair) solid var(--color-rule); padding-left:0; padding-top:var(--space-xl);}}
+
+/* ============ CLIENTS ============ */
+.clients{background:var(--color-stone); color:var(--color-ink-rev); padding:var(--space-3xl) 0;}
+.clients h2{font-size:var(--text-lg); font-weight:400; color:var(--color-muted-rev); margin-bottom:var(--space-xl);}
+.clients h2 .mono{font-size:var(--text-xs); letter-spacing:0.16em; text-transform:uppercase; color:var(--color-accent); display:block; margin-bottom:var(--space-sm);}
+.client-wall{display:flex; flex-wrap:wrap; gap:var(--space-md) var(--space-2xl); align-items:baseline;}
+.client-wall span{font-family:var(--font-display); font-size:var(--text-lg); font-weight:400; letter-spacing:-0.01em; color:var(--color-ink-rev); opacity:.86;}
+
+/* ============ CONTACT ============ */
+.contact{padding:var(--space-4xl) 0 var(--space-3xl);}
+.contact__grid{display:grid; grid-template-columns:1.2fr 0.8fr; gap:var(--space-2xl); align-items:end;}
+.contact h2{font-size:var(--text-3xl); font-weight:300; letter-spacing:-0.03em; line-height:1.04; max-width:14ch;}
+.contact h2 em{font-style:italic; color:var(--color-accent-ink);}
+.contact__lines{display:grid; gap:var(--space-md);}
+.contact__line{display:grid; gap:.2rem;}
+.contact__line span{font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-neutral);}
+.contact__line a, .contact__line p{font-size:var(--text-md); color:var(--color-ink);}
+.contact__line a{transition:color var(--dur-micro) var(--ease-out); text-decoration:underline; text-decoration-color:var(--color-rule); text-underline-offset:4px;}
+.contact__line a:hover{color:var(--color-accent-ink); text-decoration-color:var(--color-accent-ink);}
+@media (max-width:760px){.contact__grid{grid-template-columns:1fr; gap:var(--space-xl);}}
+
+/* ============ FOOTER — Ft1 mast-headed ============ */
+.foot{border-top:var(--rule-hair) solid var(--color-rule); padding:var(--space-2xl) 0;}
+.foot__inner{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:var(--space-md) var(--space-lg);}
+.foot__logo{height:30px; width:auto; display:block;}
+.foot__tag{color:var(--color-muted); font-size:var(--text-sm); max-width:40ch;}
+.foot__links{font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.08em; text-transform:uppercase; color:var(--color-neutral);}
+.foot__links a:hover{color:var(--color-accent-ink);}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0; transform:translateY(10px); animation:reveal var(--dur-long) var(--ease-out) forwards; animation-delay:calc(var(--i,0)*70ms);}
+@keyframes reveal{to{opacity:1; transform:none;}}
+@media (prefers-reduced-motion: reduce){
+  .reveal{animation:none; opacity:1; transform:none;}
+  .card{transition:none;}
+}
+
+/* ============ SCROLL REVEAL (applied via JS only) ============ */
+.io{opacity:0; transform:translateY(18px); transition:opacity .7s var(--ease-out), transform .7s var(--ease-out); transition-delay:calc(var(--i,0)*55ms);}
+.io.in{opacity:1; transform:none;}
+
+/* ============ LOGO WALL (marquee) ============ */
+.marquee{position:relative; overflow:hidden; margin-top:var(--space-xl);
+  -webkit-mask-image:linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+          mask-image:linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);}
+.marquee__track{display:flex; gap:var(--space-md); width:max-content; animation:marquee 52s linear infinite;}
+.marquee:hover .marquee__track, .marquee:focus-within .marquee__track{animation-play-state:paused;}
+@keyframes marquee{to{transform:translateX(-50%);}}
+.logo{flex:0 0 auto; display:flex; align-items:center; justify-content:center;
+  width:208px; height:104px; border:var(--rule-hair) solid var(--color-stone-rule); border-radius:3px;
+  background:color-mix(in oklch, var(--color-stone-2) 45%, transparent);
+  transition:border-color var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out);}
+.logo:hover{border-color:var(--color-accent); background:color-mix(in oklch, var(--color-stone-2) 85%, transparent); transform:translateY(-2px);}
+/* image slot: drop a client logo (ideally a monochrome SVG/PNG) into the <img>.
+   The .logo__mark caption shows through only when no image is present (empty/broken src). */
+.logo{position:relative;}
+.logo__img{max-width:74%; max-height:54%; width:auto; height:auto; object-fit:contain;
+  /* render any-colour logo as a clean monochrome on the dark wall; lifts on hover */
+  filter:brightness(0) invert(1); opacity:.62;
+  transition:opacity var(--dur-short) var(--ease-out), filter var(--dur-short) var(--ease-out);}
+.logo:hover .logo__img{opacity:1;}
+.logo__img[src=""],
+.logo__img:not([src]){display:none;}                 /* unfilled slot -> show caption */
+.logo__mark{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-body); font-weight:600; font-size:var(--text-sm); letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--color-ink-rev); opacity:.40; text-align:center; line-height:1.25; padding:0 1.1rem;
+  transition:opacity var(--dur-short) var(--ease-out); pointer-events:none;}
+.logo:has(.logo__img[src]:not([src=""])) .logo__mark{opacity:0;}   /* hide caption once a logo is set */
+.logo:hover .logo__mark{opacity:.62;}
+
+@media (prefers-reduced-motion: reduce){
+  .io{opacity:1; transform:none; transition:none;}
+  .marquee{mask-image:none; -webkit-mask-image:none;}
+  .marquee__track{animation:none; flex-wrap:wrap; width:100%; justify-content:center; gap:var(--space-md);}
+}
+
+/* ================= CLONE (reference-structure) additions ================= */
+.nav__links{gap:var(--space-md);}
+@media (max-width:760px){
+  .nav__links{display:flex; gap:.6rem; flex-wrap:wrap; justify-content:flex-end;}
+  .nav__links a{font-size:0.6rem; letter-spacing:0.06em;}
+}
+.hero{align-items:center;}
+.hero__inner{text-align:center; max-width:none; padding:0 clamp(1rem,4vw,3rem);}
+.hero__name{font-size:clamp(3.2rem,8vw + 1rem,7rem); font-weight:500; letter-spacing:-0.03em; line-height:1;}
+.hero__tag{margin:var(--space-lg) auto 0; max-width:42ch; font-family:var(--font-display); font-style:italic;
+  font-size:var(--text-xl); font-weight:300; color:var(--color-ink-rev); opacity:.92;}
+.hero__kick{justify-content:center;}
+
+.snum{display:flex; align-items:baseline; gap:.85rem; margin-bottom:var(--space-2xl);}
+.snum__n{font-family:var(--font-mono); font-size:var(--text-lg); color:var(--color-accent-ink); font-weight:400;}
+.snum__t{font-family:var(--font-display); font-size:calc(var(--text-2xl) * 1.12); font-weight:500; letter-spacing:-0.02em; text-transform:lowercase;}
+
+.about{padding:var(--space-3xl) 0 var(--space-xl);}
+.about__grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:var(--space-2xl);}
+.about__lead{font-family:var(--font-display); font-size:var(--text-xl); font-weight:300; line-height:1.3; letter-spacing:-0.015em; max-width:24ch;}
+.about__lead em{font-style:italic; color:var(--color-accent-ink);}
+.about__body{max-width:var(--measure); color:var(--color-muted); font-size:var(--text-md); display:grid; gap:var(--space-md);}
+.about__svc{font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-ink); margin-top:var(--space-xs);}
+.about__stats{margin-top:var(--space-3xl); display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:var(--space-lg) var(--space-xl);
+  border-top:var(--rule-hair) solid var(--color-rule); padding-top:var(--space-xl);}
+.about__stats .stat__n{color:var(--color-ink);}
+.about__stats .stat__l{color:var(--color-neutral);}
+@media (max-width:860px){.about__grid{grid-template-columns:1fr; gap:var(--space-xl);}}
+@media (max-width:680px){.about__stats{grid-template-columns:repeat(2,minmax(0,1fr));}}
+
+.clients-sec{background:var(--color-paper-2); padding:var(--space-4xl) 0;}
+.wps{text-align:center; font-family:var(--font-display); font-weight:500; font-size:calc(var(--text-2xl) * 1.28); letter-spacing:-0.02em; margin-bottom:var(--space-sm);}
+.wps::after{content:""; display:block; width:54px; height:2px; background:var(--color-ink); margin:var(--space-md) auto var(--space-3xl);}
+.testis{display:grid; grid-template-columns:repeat(2,1fr); gap:var(--space-3xl); max-width:980px; margin:0 auto var(--space-3xl);}
+.testi{display:flex; flex-direction:column; align-items:center; text-align:center; gap:var(--space-md);
+  background:none; border:none; border-radius:0; padding:0 var(--space-md);}
+.testi__avatar{width:148px; height:148px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  background:var(--color-stone); color:var(--color-ink-rev); font-family:var(--font-display); font-size:calc(var(--text-2xl) * 1.1); letter-spacing:0.04em; margin-bottom:var(--space-xs);}
+.testi__name{font-family:var(--font-display); font-style:italic; font-size:var(--text-xl); font-weight:500; letter-spacing:-0.005em;}
+.testi__role{font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-neutral); max-width:32ch;}
+.testi__li{color:var(--color-neutral); transition:color var(--dur-micro) var(--ease-out); line-height:0;}
+.testi__li:hover{color:var(--color-accent-ink);}
+.testi__quote{margin:var(--space-sm) 0 0; font-family:var(--font-display); font-style:italic; font-size:var(--text-md); line-height:1.5; color:var(--color-ink); max-width:42ch;}
+.clients-tag{text-align:center; font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.16em; text-transform:uppercase; color:var(--color-accent-ink); margin-bottom:var(--space-lg);}
+@media (max-width:760px){.testis{grid-template-columns:1fr; gap:var(--space-lg);}}
+
+.clients-sec .logo{border-color:var(--color-rule); background:var(--color-paper);}
+.clients-sec .logo:hover{border-color:var(--color-accent); background:var(--color-paper);}
+.clients-sec .logo__img{filter:none; opacity:1;}
+.clients-sec .logo__mark{color:var(--color-muted);}
+
+.contact__grid2{display:grid; grid-template-columns:1fr 1fr; gap:var(--space-2xl);}
+.subscribe h3, .cdetails h3{font-family:var(--font-display); font-weight:400; font-size:var(--text-lg); margin:0 0 var(--space-md);}
+.subform{display:flex; gap:var(--space-sm); flex-wrap:wrap; max-width:420px;}
+.subform input{flex:1 1 200px; min-width:0; font-family:var(--font-body); font-size:var(--text-base); color:var(--color-ink);
+  background:var(--color-paper); border:var(--rule-hair) solid var(--color-rule); border-radius:3px; padding:.7rem .9rem;}
+.subform input:focus-visible{outline:2px solid var(--color-focus); outline-offset:1px;}
+.subform button{font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.1em; text-transform:uppercase; white-space:nowrap;
+  background:var(--color-ink); color:var(--color-paper); border:none; border-radius:3px; padding:.7rem 1.2rem; cursor:pointer;
+  transition:background-color var(--dur-short) var(--ease-out);}
+.subform button:hover{background:var(--color-accent-ink);}
+.subthanks{margin-top:var(--space-sm); font-size:var(--text-sm); color:var(--color-accent-ink);}
+.cdetails{display:grid; gap:var(--space-md); align-content:start;}
+.cline{display:grid; gap:.15rem;}
+.cline span{font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-neutral);}
+.cline a, .cline p{font-size:var(--text-md); color:var(--color-ink); margin:0;}
+.cline a{text-decoration:underline; text-decoration-color:var(--color-rule); text-underline-offset:4px; transition:color var(--dur-micro) var(--ease-out);}
+.cline a:hover{color:var(--color-accent-ink); text-decoration-color:var(--color-accent-ink);}
+.social{display:flex; gap:var(--space-md); margin-top:var(--space-sm);}
+.social a{width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  border:var(--rule-hair) solid var(--color-rule); color:var(--color-muted); transition:color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out);}
+.social a:hover{color:var(--color-accent-ink); border-color:var(--color-accent);}
+@media (max-width:760px){.contact__grid2{grid-template-columns:1fr; gap:var(--space-xl);}}
+
+/* ===== refinement overrides ===== */
+.plate::after{content:none;}                 /* clean photos, reference-style */
+.card__flag{font-family:var(--font-mono); font-size:0.66rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--color-neutral); margin-top:.3rem;}
+.testi__name{font-size:var(--text-xl); font-style:italic;}
+
+/* logo lockup (intentional finished placeholder; hidden once a real logo loads) */
+.logo__fallback{display:flex; flex-direction:column; align-items:center; gap:.5rem;}
+.logo__mono{width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display); font-size:var(--text-md); line-height:1; color:var(--color-accent-ink);
+  border:1px solid color-mix(in oklch, var(--color-accent) 45%, var(--color-rule));
+  transition:border-color var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out);}
+.logo__name{font-family:var(--font-body); font-weight:600; font-size:0.74rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-muted); transition:color var(--dur-short) var(--ease-out);}
+.logo:hover .logo__mono{background:color-mix(in oklch, var(--color-accent) 12%, transparent); border-color:var(--color-accent);}
+.logo:hover .logo__name{color:var(--color-ink);}
+.logo__img[src=""], .logo__img:not([src]){display:none;}
+.logo:has(.logo__img[src]:not([src=""])) .logo__fallback{display:none;}
+
+/* ===== reference match: centered numbered headers + vertical connectors ===== */
+.snum{justify-content:center; gap:.55rem; margin-bottom:var(--space-xl);}
+.snum__n, .snum__t{font-family:var(--font-display); font-style:italic; font-weight:400; letter-spacing:0.18em; color:var(--color-neutral); font-size:var(--text-lg); text-transform:none;}
+.snum__t{text-transform:lowercase;}
+.vline{display:block; width:1px; height:48px; background:var(--color-rule); margin:0 auto var(--space-lg);}
+
+/* About centered */
+.about--center{text-align:center;}
+.about--center .vline:last-child{margin:var(--space-lg) auto 0;}
+.about__text{max-width:60ch; margin:0 auto; display:grid; gap:var(--space-lg);}
+.about__text p{font-size:var(--text-md); line-height:1.85; color:var(--color-ink); margin:0;}
+.about__subhead{display:block; margin-bottom:.5rem;}
+
+/* Portfolio masonry */
+.work .wrap{max-width:1480px;}
+.gallery{column-count:3; column-gap:var(--space-lg); margin:0 auto;}
+@media (max-width:1100px){.gallery{column-count:2; column-gap:var(--space-lg);}}
+@media (max-width:620px){.gallery{column-count:1; column-gap:0;}}
+.gitem{position:relative; display:block; margin:0 0 var(--space-lg); break-inside:avoid; -webkit-column-break-inside:avoid;
+  cursor:pointer; overflow:clip; border-radius:2px; background:var(--color-stone);}
+.gitem__img{width:100%; height:auto; display:block; filter:grayscale(0.5) saturate(0.9); transition:transform .6s var(--ease-out), filter .55s var(--ease-out);}
+.gitem::after{content:""; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(180deg, transparent 42%, color-mix(in oklch, var(--color-ink) 80%, transparent));
+  opacity:0; transition:opacity .4s var(--ease-out);}
+.gitem__name{position:absolute; left:1.1rem; right:1.1rem; bottom:1rem; z-index:2; color:#fff;
+  font-family:var(--font-display); font-style:italic; font-size:var(--text-lg); line-height:1.2;
+  opacity:0; transform:translateY(10px); transition:opacity .4s var(--ease-out), transform .4s var(--ease-out);}
+.gitem:hover .gitem__img, .gitem:focus-visible .gitem__img{transform:scale(1.05); filter:grayscale(0);}
+.gitem:hover::after, .gitem:focus-visible::after{opacity:1;}
+.gitem:hover .gitem__name, .gitem:focus-visible .gitem__name{opacity:1; transform:none;}
+.gitem:focus-visible{outline:2px solid var(--color-focus); outline-offset:3px;}
+
+/* Detail modal */
+.modal{position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center; padding:clamp(1rem,4vw,3rem);}
+.modal[hidden]{display:none;}
+.modal__backdrop{position:absolute; inset:0; background:color-mix(in oklch, var(--color-ink) 66%, transparent); animation:mfade .3s var(--ease-out);}
+@supports (backdrop-filter:blur(2px)){.modal__backdrop{backdrop-filter:blur(4px);}}
+.modal__panel{position:relative; z-index:1; width:100%; max-width:1140px; max-height:88vh; overflow:hidden;
+  background:var(--color-paper); border-radius:4px; display:grid; grid-template-columns:1.25fr 1fr;
+  box-shadow:0 40px 90px -28px rgba(0,0,0,.45); animation:mpop .4s var(--ease-out);}
+.modal__media{background:var(--color-stone); min-height:0; height:100%; max-height:88vh; display:flex; flex-direction:column;}
+.mgallery__stage{position:relative; flex:1 1 auto; min-height:0; background:var(--color-stone); overflow:hidden;}
+.mgallery__stage img{width:100%; height:100%; object-fit:cover; display:block;}
+.mgallery__nav{position:absolute; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%;
+  border:1.5px solid rgba(255,255,255,.75); cursor:pointer;
+  display:flex; align-items:center; justify-content:center; background:rgba(20,18,16,.62); color:#fff;
+  font-size:1.5rem; line-height:1; box-shadow:0 4px 16px rgba(0,0,0,.4);
+  transition:background-color var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out);}
+.mgallery__nav:hover{background:rgba(20,18,16,.88); border-color:#fff; transform:translateY(-50%) scale(1.06);}
+.mgallery__nav:focus-visible{outline:2px solid #fff; outline-offset:2px;}
+.mgallery__nav--prev{left:.6rem;}
+.mgallery__nav--next{right:.6rem;}
+.mgallery__count{position:absolute; top:.6rem; right:.6rem; z-index:2; font-family:var(--font-mono); font-size:.68rem; letter-spacing:.06em;
+  color:#fff; background:color-mix(in oklch, var(--color-ink) 55%, transparent); padding:.25rem .55rem; border-radius:999px;}
+.mgallery__caption{padding:.65rem 1rem; font-size:var(--text-sm); color:var(--color-muted-rev); background:var(--color-stone-2);
+  border-top:1px solid var(--color-stone-rule); min-height:1.4em;}
+.mgallery__thumbs{display:flex; gap:.4rem; padding:.55rem; background:var(--color-stone); overflow-x:auto; border-top:1px solid var(--color-stone-rule);}
+.mgallery__thumb{flex:0 0 auto; width:56px; height:42px; border-radius:2px; overflow:hidden; border:2px solid transparent; padding:0;
+  cursor:pointer; opacity:.55; transition:opacity .2s var(--ease-out), border-color .2s var(--ease-out); background:none;}
+.mgallery__thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+.mgallery__thumb:hover{opacity:.85;}
+.mgallery__thumb.is-active{opacity:1; border-color:var(--color-accent-soft);}
+.modal__body{padding:var(--space-2xl); overflow:auto;}
+.modal__kicker{font-family:var(--font-body); font-size:var(--text-xs); letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-ink); margin:0 0 var(--space-sm);}
+.modal__title{font-family:var(--font-display); font-size:calc(var(--text-2xl) * 1.05); font-weight:500; letter-spacing:-0.01em; line-height:1.08; margin:0 0 .35rem;}
+.modal__loc{font-family:var(--font-body); font-size:var(--text-sm); color:var(--color-muted); margin:0 0 var(--space-lg);}
+.modal__specs{display:grid; gap:.55rem; margin:0; border-top:var(--rule-hair) solid var(--color-rule); padding-top:var(--space-lg);}
+.mspec{display:flex; gap:1rem; font-size:var(--text-base);}
+.mspec dt{flex:0 0 6.5rem; font-family:var(--font-body); font-size:var(--text-xs); letter-spacing:0.08em; text-transform:uppercase; color:var(--color-neutral); padding-top:.18rem;}
+.mspec dd{margin:0; color:var(--color-ink);}
+.modal__desc{margin:var(--space-lg) 0 0; font-size:var(--text-base); line-height:1.65; color:var(--color-muted);}
+.modal__close{position:absolute; top:.55rem; right:.6rem; z-index:3; width:40px; height:40px; border-radius:50%; border:none;
+  background:color-mix(in oklch, var(--color-paper) 78%, transparent); color:var(--color-ink); font-size:1.55rem; line-height:1; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; transition:background-color var(--dur-short) var(--ease-out);}
+.modal__close:hover{background:var(--color-paper);}
+@keyframes mfade{from{opacity:0;}to{opacity:1;}}
+@keyframes mpop{from{opacity:0; transform:translateY(14px) scale(.985);}to{opacity:1; transform:none;}}
+@media (max-width:760px){
+  .modal__panel{grid-template-columns:1fr; max-height:90vh; overflow:auto;}
+  .modal__media{max-height:none;}
+  .mgallery__stage{max-height:44vh; aspect-ratio:16/10;}
+  .mgallery__count{right:auto; left:.6rem;}
+}
+@media (prefers-reduced-motion:reduce){
+  .gitem__img{transition:none;}
+  .gitem::after{opacity:1; background:linear-gradient(180deg, transparent 55%, color-mix(in oklch, var(--color-ink) 72%, transparent));}
+  .gitem__name{opacity:1; transform:none;}
+  .gitem:hover .gitem__img, .gitem:focus-visible .gitem__img{transform:none; filter:grayscale(0);}
+  .modal__backdrop, .modal__panel{animation:none;}
+}
+
+/* ===== contact (mailing list removed) ===== */
+.contact__single{display:flex; justify-content:center;}
+.contact__single .cdetails{align-items:center; text-align:center; gap:var(--space-md);}
+.contact__single .cline{justify-items:center;}
+.contact__single .social{justify-content:center; margin-top:var(--space-xs);}
+.wa-inline{display:inline-flex; align-items:center; gap:.6rem; margin-top:var(--space-sm);
+  font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.1em; text-transform:uppercase;
+  color:#fff; background:var(--wa-green); border-radius:999px; padding:.7rem 1.3rem;
+  transition:background-color var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out);}
+.wa-inline svg{flex:none;}
+.wa-inline:hover{background:var(--wa-green-dark); transform:translateY(-1px);}
+
+/* ===== sticky WhatsApp button ===== */
+.wa-fab{position:fixed; right:clamp(1rem,3vw,2rem); bottom:clamp(1rem,3vw,2rem); z-index:900;
+  display:inline-flex; align-items:center; gap:.6rem; padding:.85rem 1.25rem; border-radius:999px;
+  background:var(--wa-green); color:#fff; box-shadow:0 14px 30px -10px rgba(37,211,102,.5);
+  transition:transform var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out);}
+.wa-fab svg{flex:none; width:24px; height:24px;}
+.wa-fab__label{font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.1em; text-transform:uppercase; white-space:nowrap;}
+.wa-fab:hover{transform:translateY(-2px); background:var(--wa-green-dark); box-shadow:0 18px 40px -10px rgba(37,211,102,.6);}
+.wa-fab:focus-visible{outline:2px solid var(--color-focus); outline-offset:3px;}
+@media (max-width:560px){
+  .wa-fab{padding:0; width:56px; height:56px; justify-content:center; border-radius:50%;}
+  .wa-fab__label{display:none;}
+}
+@media (prefers-reduced-motion:reduce){.wa-fab,.wa-inline{transition:none;}}
+</style>
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="INK Architecture home">
+    <img class="nav__logo" src="assets/logo/ink-logo.png" alt="INK Architecture">
+  </a>
+  <div class="nav__right">
+    <ul class="nav__links">
+      <li><a href="#top">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero__frame"></div>
+    <div class="hero__bg" style="background-image:url('assets/hero/hero.jpg')"></div>
+    <div class="hero__scrim"></div>
+    <div class="wrap hero__inner">
+      <div class="hero__eyebrow hero__kick reveal" style="--i:0"><span class="mono">Bangalore &middot; India</span></div>
+      <h1 class="hero__name reveal" style="--i:1">INK Architecture</h1>
+      <p class="hero__tag reveal" style="--i:2">From the master plan to the interior, designed around one outcome: a happy, satisfied client.</p>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap about--center">
+      <span class="vline"></span>
+      <div class="snum"><span class="snum__n">01</span><span class="snum__t">about</span></div>
+      <div class="about__text">
+        <p>We are a bespoke Master Planning, Architectural &amp; Interior Design firm headquartered in Bangalore, undertaking projects across South India, especially Karnataka and Kerala. The project typologies include Master Planning, Mixed&#8209;use developments, IT &amp; Business Parks, Corporate campuses and interiors, and residential apartments &amp; villas.</p>
+        <div>
+          <span class="kicker about__subhead">Our strength</span>
+          <p>Our core strength is wide experience that delivers value to clients in aesthetics, commercial returns and sustainability.</p>
+        </div>
+        <p>At INK our design approach is client&#8209;focused: we design to client needs to create &ldquo;happy and satisfied clients.&rdquo; We encourage client participation during design to understand business needs and preferences, and resolve them through creative, structured design solutions.</p>
+      </div>
+      <span class="vline"></span>
+    </div>
+  </section>
+
+  <section class="work" id="portfolio">
+    <div class="wrap">
+      <div class="snum"><span class="snum__n">02</span><span class="snum__t">portfolio</span></div>
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </section>
+
+  <section class="clients-sec" id="clients">
+    <div class="wrap">
+      <div class="snum"><span class="snum__n">03</span><span class="snum__t">clients</span></div>
+      <h3 class="wps">What People Say</h3>
+      <div class="testis">
+        <figure class="testi">
+          <div class="testi__avatar" aria-hidden="true">KA</div>
+          <figcaption class="testi__name">K. V. Abdul Azeez</figcaption>
+          <p class="testi__role">Chairman &amp; Managing Director, Skyline Builders</p>
+          <a class="testi__li" href="https://www.linkedin.com/in/nagaraj-k/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.51 2.5 2.5 0 0 1 4.98 3.5zM.2 8.4h4.56V24H.2V8.4zM8.3 8.4h4.37v2.13h.06c.61-1.16 2.1-2.38 4.32-2.38 4.62 0 5.47 3.04 5.47 7v8.85h-4.55v-7.84c0-1.87-.03-4.28-2.6-4.28-2.6 0-3 2.03-3 4.13V24H8.3V8.4z"/></svg></a>
+          <blockquote class="testi__quote">&ldquo;We are thoroughly delighted with the services provided by Nagaraj and his team &mdash; their designs and project delivery were perfectly aligned with our business needs.&rdquo;</blockquote>
+        </figure>
+        <figure class="testi">
+          <div class="testi__avatar" aria-hidden="true">VK</div>
+          <figcaption class="testi__name">Virender Singh Kattarya</figcaption>
+          <p class="testi__role">Executive Director&ndash;Aviation, AECOM India &middot; BLR Airport T-1</p>
+          <a class="testi__li" href="https://www.linkedin.com/in/nagaraj-k/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.51 2.5 2.5 0 0 1 4.98 3.5zM.2 8.4h4.56V24H.2V8.4zM8.3 8.4h4.37v2.13h.06c.61-1.16 2.1-2.38 4.32-2.38 4.62 0 5.47 3.04 5.47 7v8.85h-4.55v-7.84c0-1.87-.03-4.28-2.6-4.28-2.6 0-3 2.03-3 4.13V24H8.3V8.4z"/></svg></a>
+          <blockquote class="testi__quote">&ldquo;INK Architecture acted as sub-consultant on the Terminal-1 upgradation at Bangalore Airport. Their performance was found to be satisfactory.&rdquo;</blockquote>
+        </figure>
+      </div>
+      <p class="clients-tag">Selected clients</p>
+      <div class="marquee" id="logoMarquee" aria-label="Client logos">
+        <div class="marquee__track" id="logoTrack">
+          <div class="logo"><img class="logo__img" src="logos/tata-realty.webp" alt="TATA Realty logo" onerror="this.removeAttribute('src')"><span class="logo__fallback"><span class="logo__mono">TR</span><span class="logo__name">TATA Realty</span></span></div>
+          <div class="logo"><img class="logo__img" src="logos/skyline-builders.webp" alt="Skyline Builders logo" onerror="this.removeAttribute('src')"><span class="logo__fallback"><span class="logo__mono">SB</span><span class="logo__name">Skyline Builders</span></span></div>
+          <div class="logo"><img class="logo__img" src="logos/mariapps.webp" alt="Mariapps logo" onerror="this.removeAttribute('src')"><span class="logo__fallback"><span class="logo__mono">M</span><span class="logo__name">Mariapps</span></span></div>
+          <div class="logo"><img class="logo__img" src="logos/dell-emc.webp" alt="Dell EMC logo" onerror="this.removeAttribute('src')"><span class="logo__fallback"><span class="logo__mono">D</span><span class="logo__name">Dell EMC</span></span></div>
+          <div class="logo"><img class="logo__img" src="logos/manhattan-associates.webp" alt="Manhattan Associates logo" onerror="this.removeAttribute('src')"><span class="logo__fallback"><span class="logo__mono">MA</span><span class="logo__name">Manhattan Associates</span></span></div>
+          <div class="logo"><img class="logo__img" src="logos/clayworks.webp" alt="Clayworks logo" onerror="this.removeAttribute('src')"><span class="logo__fallback"><span class="logo__mono">C</span><span class="logo__name">Clayworks</span></span></div>
+          <div class="logo"><img class="logo__img" src="logos/mphasis.webp" alt="Mphasis logo" onerror="this.removeAttribute('src')"><span class="logo__fallback"><span class="logo__mono">MP</span><span class="logo__name">Mphasis</span></span></div>
+          <div class="logo"><img class="logo__img" src="logos/peninsula.webp" alt="Peninsula logo" onerror="this.removeAttribute('src')"><span class="logo__fallback"><span class="logo__mono">P</span><span class="logo__name">Peninsula</span></span></div>
+          <div class="logo"><img class="logo__img" src="logos/aecom.webp" alt="AECOM logo" onerror="this.removeAttribute('src')"><span class="logo__fallback"><span class="logo__mono">A</span><span class="logo__name">AECOM</span></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="snum"><span class="snum__n">04</span><span class="snum__t">contact</span></div>
+      <div class="contact__single">
+        <div class="cdetails">
+          <div class="cline"><span>Email</span><a href="mailto:nagaraj@inkarchitecture.net">nagaraj@inkarchitecture.net</a></div>
+          <div class="cline"><span>WhatsApp / Phone</span><a href="https://wa.me/919663367649" target="_blank" rel="noopener">+91 96633 67649</a></div>
+          <div class="cline"><span>Address</span><p>Bangalore, Karnataka, India</p></div>
+          <a class="wa-inline" href="https://wa.me/919663367649?text=Hi%20INK%20Architecture%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.07 1.6 5.83L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.13a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-2.6.68.7-2.54-.2-.31a8.2 8.2 0 0 1-1.26-4.4c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.69 8.23-8.23 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg> Message us on WhatsApp</a>
+          <div class="social">
+            <a href="https://www.linkedin.com/in/nagaraj-k/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.51 2.5 2.5 0 0 1 4.98 3.5zM.2 8.4h4.56V24H.2V8.4zM8.3 8.4h4.37v2.13h.06c.61-1.16 2.1-2.38 4.32-2.38 4.62 0 5.47 3.04 5.47 7v8.85h-4.55v-7.84c0-1.87-.03-4.28-2.6-4.28-2.6 0-3 2.03-3 4.13V24H8.3V8.4z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5h1.65V3.6c-.29-.04-1.28-.13-2.43-.13-2.4 0-4.04 1.47-4.04 4.16v2.32H7.5V13h2.72v8h3.28z"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal" id="projModal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Project details">
+      <button class="modal__close" type="button" data-close aria-label="Close">&times;</button>
+      <div class="modal__media">
+        <div class="mgallery__stage">
+          <img id="modalImg" src="" alt="">
+          <button class="mgallery__nav mgallery__nav--prev" type="button" id="mgPrev" aria-label="Previous image">&lsaquo;</button>
+          <button class="mgallery__nav mgallery__nav--next" type="button" id="mgNext" aria-label="Next image">&rsaquo;</button>
+          <span class="mgallery__count" id="mgCount"></span>
+        </div>
+        <p class="mgallery__caption" id="mgCaption"></p>
+        <div class="mgallery__thumbs" id="mgThumbs"></div>
+      </div>
+      <div class="modal__body" id="modalBody">
+        <p class="modal__kicker" id="modalKicker"></p>
+        <h3 class="modal__title" id="modalTitle"></h3>
+        <p class="modal__loc" id="modalLoc"></p>
+        <dl class="modal__specs" id="modalSpecs"></dl>
+        <p class="modal__desc" id="modalDesc"></p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <img class="foot__logo" src="assets/logo/ink-logo.png" alt="INK Architecture">
+    <span class="foot__tag">Master planning, architecture and interior design &mdash; Bangalore.</span>
+    <span class="foot__links">&copy; 2026 INK Architecture</span>
+  </div>
+</footer>
+
+<a class="wa-fab" href="https://wa.me/919663367649?text=Hi%20INK%20Architecture%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener" aria-label="Message us on WhatsApp">
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.07 1.6 5.83L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.13a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-2.6.68.7-2.54-.2-.31a8.2 8.2 0 0 1-1.26-4.4c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.69 8.23-8.23 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
+  <span class="wa-fab__label">Message us</span>
+</a>
+
+
+<script>
+(function(){
+  var nav = document.getElementById('nav');
+  var onScroll = function(){ nav.classList.toggle('is-stuck', window.scrollY > 24); };
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Portfolio data — cover image is images[0]; all images shown in the modal on click.
+  var PROJECTS = {
+    "mariapps": {
+      title:"Mariapps Corporate Office", location:"Smart City, Kochi", kicker:"Corporate & workplace", cat:"workplace",
+      specs:[["Client","Mariapps (Germany)"],["Site area","1.5 acres"],["Built-up","2 lakh sft"],["Scope","Architecture, interior design, MEPF, C&S, landscape"]],
+      desc:"Mariapps is a German shipping-software company with a global presence. We designed their green-field campus in Smart City, Kochi — from site selection through to handover — as principal architect, covering the base building, workplace interiors and supporting infrastructure.",
+      images:[
+        {src:"assets/projects/mariapps/01.jpg", caption:"Dusk view along the main avenue"},
+        {src:"assets/projects/mariapps/02.jpg", caption:"Entrance canopy and drop-off, daytime"},
+        {src:"assets/projects/mariapps/03.jpg", caption:"Entrance canopy — alternate angle"},
+        {src:"assets/projects/mariapps/04.jpg", caption:"Night aerial view of the completed campus"},
+        {src:"assets/projects/mariapps/05.jpg", caption:"Entrance canopy — vertical elevation"},
+        {src:"assets/projects/mariapps/06.jpg", caption:"Daytime elevation with landscaped frontage"}
+      ]
+    },
+    "siri-industrial-park": {
+      title:"SIRI Industrial Park", location:"Belthangadi, Karnataka", kicker:"Industrial", cat:"industrial",
+      specs:[["Client","SIRI, Dharmasthala"],["Site area","6.7 acres"],["Project size","1,00,000 sft"],["Role","Principal architect"]],
+      desc:"An industrial park for SIRI at Belthangadi, combining production and warehouse buildings with a landscaped entrance sequence and office block.",
+      images:[
+        {src:"assets/projects/siri-industrial-park/01.jpg", caption:"Entrance gate at dusk"},
+        {src:"assets/projects/siri-industrial-park/02.jpg", caption:"Main gate and signage, daytime"},
+        {src:"assets/projects/siri-industrial-park/03.jpg", caption:"Warehouse block with loading access"},
+        {src:"assets/projects/siri-industrial-park/04.jpg", caption:"Office block with landscaped terrace"}
+      ]
+    },
+    "tata-sez-gopalpur": {
+      title:"TATA Realty Industrial SEZ", location:"Gopalpur, Odisha", kicker:"Master planning", cat:"master",
+      specs:[["Client","TATA Realty"],["Site area","2,500 acres"],["Built-up","1 million sft (Phase 1)"],["Scope","Master plan report"]],
+      desc:"A 2,500-acre industrial SEZ master plan for TATA Realty at Gopalpur, Odisha, covering phased development of industrial plots, township and green infrastructure.",
+      images:[
+        {src:"assets/projects/tata-sez-gopalpur/01.jpg", caption:"Gateway structure at the SEZ entrance"},
+        {src:"assets/projects/tata-sez-gopalpur/02.jpg", caption:"Aerial view of the master plan"}
+      ]
+    },
+    "grand-mall-kochi": {
+      title:"Grand Mall", location:"Kochi", kicker:"Retail", cat:"retail",
+      specs:[["Client","Mukkadan Group"],["Site area","1 acre"],["Project size","1 lakh sft"],["Scope","Architecture, interior design"]],
+      desc:"A retail mall for the Mukkadan Group in Kochi, with a curved street-facing façade, landscaped rooftop terrace and multi-level retail floors.",
+      images:[
+        {src:"assets/projects/grand-mall-kochi/01.jpg", caption:"Street-facing elevation, daytime"},
+        {src:"assets/projects/grand-mall-kochi/02.jpg", caption:"Aerial perspective"},
+        {src:"assets/projects/grand-mall-kochi/03.jpg", caption:"Evening view"}
+      ]
+    },
+    "villas-manipal": {
+      title:"Villa Development", location:"Manipal", kicker:"Residential", cat:"residential",
+      specs:[["Client","Premium Builders, Udupi"],["Site area","5.5 acres"],["Built-up","2,50,000 sft"],["Scope","Architecture, interior design, MEPF, C&S, landscape"]],
+      desc:"A gated villa community at Manipal for Premium Builders, Udupi, with individually designed row-villa typologies set within a landscaped master plan.",
+      images:[
+        {src:"assets/projects/villas-manipal/01.jpg", caption:"Villa row, street elevation"},
+        {src:"assets/projects/villas-manipal/02.jpg", caption:"Master site plan with villa typologies"}
+      ]
+    },
+    "apartments-karnataka": {
+      title:"Residential Apartment Towers", location:"Karnataka", kicker:"Residential", cat:"residential",
+      specs:[["Scope","Architecture & interior design"]],
+      desc:"A high-rise residential development featuring landscaped podium amenities, a swimming-pool deck and multiple point towers.",
+      images:[
+        {src:"assets/projects/apartments-karnataka/01.jpg", caption:"Podium pool deck"},
+        {src:"assets/projects/apartments-karnataka/02.jpg", caption:"Twilight view of the towers"},
+        {src:"assets/projects/apartments-karnataka/03.jpg", caption:"Twilight view — alternate angle"},
+        {src:"assets/projects/apartments-karnataka/04.jpg", caption:"Sunset view of the complex"}
+      ]
+    },
+    "private-residences": {
+      title:"Private Residences", location:"Bangalore", kicker:"Residential · private houses", cat:"residential",
+      specs:[["Scope","Architecture & interior design"]],
+      desc:"A set of independent private residences designed for individual clients in Bangalore — including the residence for Mr. Shiv Prasad (10,000 sft), the residence for Mr. Shrikanth Puroshottaman (3,000 sft), and Sanjeevani Homes (5,000 sft).",
+      images:[
+        {src:"assets/projects/private-residences/01.jpg", caption:"VD Residence — street elevation (design for Mr. Prasad)"},
+        {src:"assets/projects/private-residences/02.jpg", caption:"VD Residence — alternate elevation"},
+        {src:"assets/projects/private-residences/03.jpg", caption:"Private residence — street elevation"},
+        {src:"assets/projects/private-residences/04.jpg", caption:"Private residence — corner view"},
+        {src:"assets/projects/private-residences/05.jpg", caption:"Private residence — day and dusk views"}
+      ]
+    },
+    "aroma-villas": {
+      title:"Aroma Villas", location:"Karnataka", kicker:"Residential", cat:"residential",
+      specs:[["Scope","Architecture & landscape design"]],
+      desc:"A boutique villa community named Aroma Villas, combining contemporary two-storey villa units with a shared clubhouse, pool and landscaped grounds within a curved master plan.",
+      images:[
+        {src:"assets/projects/aroma-villas/01.jpg", caption:"Villa unit, daytime elevation"},
+        {src:"assets/projects/aroma-villas/02.jpg", caption:"Villa unit, dusk elevation"},
+        {src:"assets/projects/aroma-villas/03.jpg", caption:"Villa unit, evening view"},
+        {src:"assets/projects/aroma-villas/04.jpg", caption:"Aerial view of the villa community master plan"}
+      ]
+    },
+    "apartments-trivandrum-1": {
+      title:"High-Rise Apartments", location:"Trivandrum", kicker:"Residential", cat:"residential",
+      specs:null,
+      desc:"A high-rise residential apartment tower in Trivandrum, featuring landscaped balconies and a contemporary brick-and-stone façade.",
+      images:[
+        {src:"assets/projects/apartments-trivandrum-1/01.jpg", caption:"Tower elevation, daytime"},
+        {src:"assets/projects/apartments-trivandrum-1/02.jpg", caption:"Tower elevation, alternate view"}
+      ]
+    },
+    "apartments-trivandrum-2": {
+      title:"High-Rise Apartments II", location:"Trivandrum", kicker:"Residential", cat:"residential",
+      specs:null,
+      desc:"A twin-tower high-rise residential development in Trivandrum.",
+      images:[
+        {src:"assets/projects/apartments-trivandrum-2/01.jpg", caption:"Twin towers, daytime view"},
+        {src:"assets/projects/apartments-trivandrum-2/02.jpg", caption:"Twin towers, close-up elevation"}
+      ]
+    },
+    "apartments-bangalore": {
+      title:"High-Rise Apartments", location:"Bangalore", kicker:"Residential", cat:"residential",
+      specs:null,
+      desc:"A high-rise residential development in Bangalore with landscaped podium gardens and a central pool deck.",
+      images:[
+        {src:"assets/projects/apartments-bangalore/01.jpg", caption:"Courtyard and pool deck, daytime"},
+        {src:"assets/projects/apartments-bangalore/02.jpg", caption:"Complex view, dusk"},
+        {src:"assets/projects/apartments-bangalore/03.jpg", caption:"Complex view, dusk — alternate angle"},
+        {src:"assets/projects/apartments-bangalore/04.jpg", caption:"Complex view, sunset"}
+      ]
+    },
+    "apartments-kochi": {
+      title:"High-Rise Apartments", location:"Kochi", kicker:"Residential", cat:"residential",
+      specs:null,
+      desc:"A pair of high-rise residential towers in Kochi set along the waterfront, with landscaped grounds and a riverside promenade.",
+      images:[
+        {src:"assets/projects/apartments-kochi/01.jpg", caption:"Riverside towers, daytime"},
+        {src:"assets/projects/apartments-kochi/02.jpg", caption:"Riverside towers — alternate view"},
+        {src:"assets/projects/apartments-kochi/03.jpg", caption:"Aerial view along the waterfront"},
+        {src:"assets/projects/apartments-kochi/04.jpg", caption:"Aerial view, dusk"}
+      ]
+    },
+    "low-rise-bangalore": {
+      title:"Low-Rise Apartments", location:"Bangalore", kicker:"Residential", cat:"residential",
+      specs:null,
+      desc:"A low-rise apartment community in Bangalore organised around a central landscaped courtyard.",
+      images:[
+        {src:"assets/projects/low-rise-bangalore/01.jpg", caption:"Courtyard garden, daytime"},
+        {src:"assets/projects/low-rise-bangalore/02.jpg", caption:"Courtyard garden, dusk"}
+      ]
+    },
+    "skyline-1": {
+      title:"Skyline Apartment Tower I", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"residential",
+      specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
+      desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
+      images:[{src:"assets/projects/skyline-1/01.jpg", caption:"Tower elevation at dusk"}]
+    },
+    "skyline-2": {
+      title:"Skyline Apartment Tower II", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"residential",
+      specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
+      desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
+      images:[{src:"assets/projects/skyline-2/01.jpg", caption:"Elevation, daytime"}]
+    },
+    "skyline-3": {
+      title:"Skyline Apartment Tower III", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"residential",
+      specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
+      desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
+      images:[
+        {src:"assets/projects/skyline-3/01.jpg", caption:"Tower elevation, daytime"},
+        {src:"assets/projects/skyline-3/02.jpg", caption:"Tower elevation, alternate angle"}
+      ]
+    },
+    "skyline-4": {
+      title:"Skyline Apartment Tower IV", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"residential",
+      specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
+      desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
+      images:[
+        {src:"assets/projects/skyline-4/01.jpg", caption:"Tower elevation, daytime"},
+        {src:"assets/projects/skyline-4/02.jpg", caption:"Tower elevation, alternate angle"}
+      ]
+    },
+    "skyline-5": {
+      title:"Skyline Apartment Tower V", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"residential",
+      specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
+      desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
+      images:[{src:"assets/projects/skyline-5/01.jpg", caption:"Tower elevation with landscaped frontage"}]
+    },
+    "skyline-6": {
+      title:"Skyline Apartment Tower VI", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"residential",
+      specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
+      desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
+      images:[{src:"assets/projects/skyline-6/01.jpg", caption:"Tower elevation at dusk"}]
+    }
+  };
+
+  // Render one gallery card per project — cover image only; remaining images + captions open in the modal.
+  (function renderGallery(){
+    var gallery=document.getElementById('gallery');
+    if(!gallery) return;
+    Object.keys(PROJECTS).forEach(function(slug){
+      var p=PROJECTS[slug];
+      var fig=document.createElement('figure');
+      fig.className='gitem'; fig.tabIndex=0; fig.setAttribute('role','button');
+      fig.setAttribute('data-slug', slug); fig.setAttribute('data-cat', p.cat);
+      fig.setAttribute('aria-label','View '+p.title+' details');
+      var img=document.createElement('img');
+      img.className='gitem__img'; img.loading='lazy'; img.src=p.images[0].src; img.alt=p.title;
+      var figc=document.createElement('figcaption'); figc.className='gitem__name';
+      var span=document.createElement('span'); span.textContent=p.title+(p.location?' — '+p.location:'');
+      figc.appendChild(span);
+      fig.appendChild(img); fig.appendChild(figc);
+      gallery.appendChild(fig);
+    });
+  })();
+
+  // Scroll reveal
+  if(!reduce && 'IntersectionObserver' in window){
+    var groups = [['.about--center .snum',0],['.about__text',0],['#portfolio .snum',0],['.gitem',1],
+      ['#clients .snum',0],['.wps',0],['.testi',1],['#clients .marquee',0],['.contact__single .cline',1]];
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:0.1, rootMargin:'0px 0px -7% 0px'});
+    groups.forEach(function(g){
+      Array.prototype.slice.call(document.querySelectorAll(g[0])).forEach(function(el,i){
+        el.classList.add('io'); if(g[1]) el.style.setProperty('--i', i % 6); io.observe(el);
+      });
+    });
+  }
+
+  // Logo marquee seamless clone
+  if(!reduce){
+    var track=document.getElementById('logoTrack');
+    if(track){ Array.prototype.slice.call(track.children).forEach(function(n){ var c=n.cloneNode(true); c.setAttribute('aria-hidden','true'); track.appendChild(c); }); }
+  }
+
+  // Project detail modal — shows every image for the clicked project, each with its own caption.
+  var modal=document.getElementById('projModal');
+  if(modal){
+    var modalImg=document.getElementById('modalImg');
+    var modalKicker=document.getElementById('modalKicker');
+    var modalTitle=document.getElementById('modalTitle');
+    var modalLoc=document.getElementById('modalLoc');
+    var modalSpecs=document.getElementById('modalSpecs');
+    var modalDesc=document.getElementById('modalDesc');
+    var mgCaption=document.getElementById('mgCaption');
+    var mgCount=document.getElementById('mgCount');
+    var mgThumbs=document.getElementById('mgThumbs');
+    var mgPrev=document.getElementById('mgPrev');
+    var mgNext=document.getElementById('mgNext');
+    var panel=modal.querySelector('.modal__panel');
+    var lastFocus=null;
+    var current=null;
+
+    function renderStage(){
+      if(!current) return;
+      var imgs=current.images, idx=current.idx, im=imgs[idx];
+      modalImg.src=im.src; modalImg.alt=im.caption||current.title;
+      mgCaption.textContent=im.caption||'';
+      var multi=imgs.length>1;
+      mgPrev.style.display=multi?'':'none';
+      mgNext.style.display=multi?'':'none';
+      mgCount.style.display=multi?'':'none';
+      mgCount.textContent=(idx+1)+' / '+imgs.length;
+      Array.prototype.slice.call(mgThumbs.children).forEach(function(t,i){ t.classList.toggle('is-active', i===idx); });
+    }
+    function buildThumbs(){
+      mgThumbs.innerHTML='';
+      if(current.images.length<=1){ mgThumbs.style.display='none'; return; }
+      mgThumbs.style.display='';
+      current.images.forEach(function(im,i){
+        var b=document.createElement('button');
+        b.type='button'; b.className='mgallery__thumb'; b.setAttribute('aria-label','Show image '+(i+1)+' of '+current.images.length);
+        var t=document.createElement('img'); t.src=im.src; t.alt=''; t.loading='lazy';
+        b.appendChild(t);
+        b.addEventListener('click', function(){ current.idx=i; renderStage(); });
+        mgThumbs.appendChild(b);
+      });
+    }
+    function step(delta){
+      if(!current || current.images.length<=1) return;
+      current.idx=(current.idx+delta+current.images.length)%current.images.length;
+      renderStage();
+    }
+    function openModal(slug){
+      var p=PROJECTS[slug];
+      if(!p) return;
+      current={images:p.images, idx:0, title:p.title};
+      modalKicker.textContent=p.kicker||'';
+      modalTitle.textContent=p.title;
+      modalLoc.textContent=p.location||'';
+      modalSpecs.innerHTML='';
+      (p.specs||[]).forEach(function(row){
+        var div=document.createElement('div'); div.className='mspec';
+        var dt=document.createElement('dt'); dt.textContent=row[0];
+        var dd=document.createElement('dd'); dd.textContent=row[1];
+        div.appendChild(dt); div.appendChild(dd); modalSpecs.appendChild(div);
+      });
+      modalDesc.textContent=p.desc||'';
+      buildThumbs();
+      renderStage();
+      panel.setAttribute('aria-label', p.title+' details');
+      lastFocus=document.activeElement;
+      modal.hidden=false; document.body.style.overflow='hidden';
+      modal.querySelector('.modal__close').focus();
+    }
+    function closeModal(){ modal.hidden=true; document.body.style.overflow=''; current=null; if(lastFocus&&lastFocus.focus)lastFocus.focus(); }
+    mgPrev.addEventListener('click', function(e){ e.stopPropagation(); step(-1); });
+    mgNext.addEventListener('click', function(e){ e.stopPropagation(); step(1); });
+    Array.prototype.slice.call(document.querySelectorAll('.gitem')).forEach(function(fig){
+      fig.addEventListener('click', function(){ openModal(fig.getAttribute('data-slug')); });
+      fig.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openModal(fig.getAttribute('data-slug')); } });
+    });
+    modal.addEventListener('click', function(e){ if(e.target.hasAttribute('data-close')) closeModal(); });
+    document.addEventListener('keydown', function(e){
+      if(modal.hidden) return;
+      if(e.key==='Escape') closeModal();
+      else if(e.key==='ArrowLeft') step(-1);
+      else if(e.key==='ArrowRight') step(1);
+    });
+  }
+
+})();
+</script>
