@@ -575,6 +575,16 @@ img{display:block; max-width:100%;}
   <section class="work" id="portfolio">
     <div class="wrap">
       <div class="snum"><span class="snum__n">02</span><span class="snum__t">portfolio</span></div>
+      <div class="filters" id="filters" role="tablist" aria-label="Filter portfolio by category">
+        <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter" type="button" data-filter="master-planning" aria-pressed="false">Master Planning</button>
+        <button class="filter" type="button" data-filter="villa-development" aria-pressed="false">Villa Development</button>
+        <button class="filter" type="button" data-filter="highrise-apartment" aria-pressed="false">Highrise Apartment</button>
+        <button class="filter" type="button" data-filter="corporate-office" aria-pressed="false">Corporate Office</button>
+        <button class="filter" type="button" data-filter="other-projects" aria-pressed="false">Other Projects</button>
+        <button class="filter" type="button" data-filter="interiors" aria-pressed="false">Interiors</button>
+        <button class="filter" type="button" data-filter="private-residences" aria-pressed="false">Private Residences</button>
+      </div>
       <div class="gallery" id="gallery"></div>
     </div>
   </section>
@@ -684,7 +694,7 @@ img{display:block; max-width:100%;}
   // Portfolio data — cover image is images[0]; all images shown in the modal on click.
   var PROJECTS = {
     "mariapps": {
-      title:"Mariapps Corporate Office", location:"Smart City, Kochi", kicker:"Corporate & workplace", cat:"workplace",
+      title:"Mariapps Corporate Office", location:"Smart City, Kochi", kicker:"Corporate & workplace", cat:"corporate-office",
       specs:[["Client","Mariapps (Germany)"],["Site area","1.5 acres"],["Built-up","2 lakh sft"],["Scope","Architecture, interior design, MEPF, C&S, landscape"]],
       desc:"Mariapps is a German shipping-software company with a global presence. We designed their green-field campus in Smart City, Kochi — from site selection through to handover — as principal architect, covering the base building, workplace interiors and supporting infrastructure.",
       images:[
@@ -697,7 +707,7 @@ img{display:block; max-width:100%;}
       ]
     },
     "siri-industrial-park": {
-      title:"SIRI Industrial Park", location:"Belthangadi, Karnataka", kicker:"Industrial", cat:"industrial",
+      title:"SIRI Industrial Park", location:"Belthangadi, Karnataka", kicker:"Industrial", cat:"other-projects",
       specs:[["Client","SIRI, Dharmasthala"],["Site area","6.7 acres"],["Project size","1,00,000 sft"],["Role","Principal architect"]],
       desc:"An industrial park for SIRI at Belthangadi, combining production and warehouse buildings with a landscaped entrance sequence and office block.",
       images:[
@@ -708,7 +718,7 @@ img{display:block; max-width:100%;}
       ]
     },
     "tata-sez-gopalpur": {
-      title:"TATA Realty Industrial SEZ", location:"Gopalpur, Odisha", kicker:"Master planning", cat:"master",
+      title:"TATA Realty Industrial SEZ", location:"Gopalpur, Odisha", kicker:"Master planning", cat:"master-planning",
       specs:[["Client","TATA Realty"],["Site area","2,500 acres"],["Built-up","1 million sft (Phase 1)"],["Scope","Master plan report"]],
       desc:"A 2,500-acre industrial SEZ master plan for TATA Realty at Gopalpur, Odisha, covering phased development of industrial plots, township and green infrastructure.",
       images:[
@@ -717,7 +727,7 @@ img{display:block; max-width:100%;}
       ]
     },
     "grand-mall-kochi": {
-      title:"Grand Mall", location:"Kochi", kicker:"Retail", cat:"retail",
+      title:"Grand Mall", location:"Kochi", kicker:"Leisure", cat:"other-projects",
       specs:[["Client","Mukkadan Group"],["Site area","1 acre"],["Project size","1 lakh sft"],["Scope","Architecture, interior design"]],
       desc:"A retail mall for the Mukkadan Group in Kochi, with a curved street-facing façade, landscaped rooftop terrace and multi-level retail floors.",
       images:[
@@ -727,7 +737,7 @@ img{display:block; max-width:100%;}
       ]
     },
     "villas-manipal": {
-      title:"Villa Development", location:"Manipal", kicker:"Residential", cat:"residential",
+      title:"Villa Development", location:"Manipal", kicker:"Master planning & villas", cat:"master-planning villa-development",
       specs:[["Client","Premium Builders, Udupi"],["Site area","5.5 acres"],["Built-up","2,50,000 sft"],["Scope","Architecture, interior design, MEPF, C&S, landscape"]],
       desc:"A gated villa community at Manipal for Premium Builders, Udupi, with individually designed row-villa typologies set within a landscaped master plan.",
       images:[
@@ -736,7 +746,7 @@ img{display:block; max-width:100%;}
       ]
     },
     "apartments-karnataka": {
-      title:"Residential Apartment Towers", location:"Karnataka", kicker:"Residential", cat:"residential",
+      title:"Residential Apartment Towers", location:"Karnataka", kicker:"Residential", cat:"highrise-apartment",
       specs:[["Scope","Architecture & interior design"]],
       desc:"A high-rise residential development featuring landscaped podium amenities, a swimming-pool deck and multiple point towers.",
       images:[
@@ -747,9 +757,9 @@ img{display:block; max-width:100%;}
       ]
     },
     "private-residences": {
-      title:"Private Residences", location:"Bangalore", kicker:"Residential · private houses", cat:"residential",
+      title:"Private Residences", location:"Bangalore", kicker:"Residential · private houses", cat:"private-residences",
       specs:[["Scope","Architecture & interior design"]],
-      desc:"A set of independent private residences designed for individual clients in Bangalore — including the residence for Mr. Shiv Prasad (10,000 sft), the residence for Mr. Shrikanth Puroshottaman (3,000 sft), and Sanjeevani Homes (5,000 sft).",
+      desc:"A set of independent private residences designed for individual clients in Bangalore — including the residence for Mr. Shiv Prasad (10,000 sft), the residence for Mr. Venkat (2,500 sft), and Sanjeevani Homes (5,000 sft).",
       images:[
         {src:"assets/projects/private-residences/01.jpg", caption:"VD Residence — street elevation (design for Mr. Prasad)"},
         {src:"assets/projects/private-residences/02.jpg", caption:"VD Residence — alternate elevation"},
@@ -759,7 +769,7 @@ img{display:block; max-width:100%;}
       ]
     },
     "aroma-villas": {
-      title:"Aroma Villas", location:"Karnataka", kicker:"Residential", cat:"residential",
+      title:"Aroma Villas", location:"Karnataka", kicker:"Residential", cat:"villa-development",
       specs:[["Scope","Architecture & landscape design"]],
       desc:"A boutique villa community named Aroma Villas, combining contemporary two-storey villa units with a shared clubhouse, pool and landscaped grounds within a curved master plan.",
       images:[
@@ -770,7 +780,7 @@ img{display:block; max-width:100%;}
       ]
     },
     "apartments-trivandrum-1": {
-      title:"High-Rise Apartments", location:"Trivandrum", kicker:"Residential", cat:"residential",
+      title:"High-Rise Apartments", location:"Trivandrum", kicker:"Residential", cat:"highrise-apartment",
       specs:null,
       desc:"A high-rise residential apartment tower in Trivandrum, featuring landscaped balconies and a contemporary brick-and-stone façade.",
       images:[
@@ -779,7 +789,7 @@ img{display:block; max-width:100%;}
       ]
     },
     "apartments-trivandrum-2": {
-      title:"High-Rise Apartments II", location:"Trivandrum", kicker:"Residential", cat:"residential",
+      title:"High-Rise Apartments II", location:"Trivandrum", kicker:"Residential", cat:"highrise-apartment",
       specs:null,
       desc:"A twin-tower high-rise residential development in Trivandrum.",
       images:[
@@ -788,7 +798,7 @@ img{display:block; max-width:100%;}
       ]
     },
     "apartments-bangalore": {
-      title:"High-Rise Apartments", location:"Bangalore", kicker:"Residential", cat:"residential",
+      title:"High-Rise Apartments", location:"Bangalore", kicker:"Residential", cat:"highrise-apartment",
       specs:null,
       desc:"A high-rise residential development in Bangalore with landscaped podium gardens and a central pool deck.",
       images:[
@@ -799,7 +809,7 @@ img{display:block; max-width:100%;}
       ]
     },
     "apartments-kochi": {
-      title:"High-Rise Apartments", location:"Kochi", kicker:"Residential", cat:"residential",
+      title:"High-Rise Apartments", location:"Kochi", kicker:"Residential", cat:"highrise-apartment",
       specs:null,
       desc:"A pair of high-rise residential towers in Kochi set along the waterfront, with landscaped grounds and a riverside promenade.",
       images:[
@@ -810,7 +820,7 @@ img{display:block; max-width:100%;}
       ]
     },
     "low-rise-bangalore": {
-      title:"Low-Rise Apartments", location:"Bangalore", kicker:"Residential", cat:"residential",
+      title:"Low-Rise Apartments", location:"Bangalore", kicker:"Residential", cat:"highrise-apartment",
       specs:null,
       desc:"A low-rise apartment community in Bangalore organised around a central landscaped courtyard.",
       images:[
@@ -819,19 +829,19 @@ img{display:block; max-width:100%;}
       ]
     },
     "skyline-1": {
-      title:"Skyline Apartment Tower I", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"residential",
+      title:"Skyline Apartment Tower I", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
       specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
       desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
       images:[{src:"assets/projects/skyline-1/01.jpg", caption:"Tower elevation at dusk"}]
     },
     "skyline-2": {
-      title:"Skyline Apartment Tower II", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"residential",
+      title:"Skyline Apartment Tower II", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
       specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
       desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
       images:[{src:"assets/projects/skyline-2/01.jpg", caption:"Elevation, daytime"}]
     },
     "skyline-3": {
-      title:"Skyline Apartment Tower III", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"residential",
+      title:"Skyline Apartment Tower III", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
       specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
       desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
       images:[
@@ -840,7 +850,7 @@ img{display:block; max-width:100%;}
       ]
     },
     "skyline-4": {
-      title:"Skyline Apartment Tower IV", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"residential",
+      title:"Skyline Apartment Tower IV", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
       specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
       desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
       images:[
@@ -849,16 +859,133 @@ img{display:block; max-width:100%;}
       ]
     },
     "skyline-5": {
-      title:"Skyline Apartment Tower V", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"residential",
+      title:"Skyline Apartment Tower V", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
       specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
       desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
       images:[{src:"assets/projects/skyline-5/01.jpg", caption:"Tower elevation with landscaped frontage"}]
     },
     "skyline-6": {
-      title:"Skyline Apartment Tower VI", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"residential",
+      title:"Skyline Apartment Tower VI", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
       specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
       desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
       images:[{src:"assets/projects/skyline-6/01.jpg", caption:"Tower elevation at dusk"}]
+    },
+    "muthoot-group": {
+      title:"Muthoot Group Corporate Office", location:"Kakkanad, Kochi", kicker:"Corporate & workplace", cat:"corporate-office",
+      specs:[["Client","Muthoot Group"],["Scope","Architecture, interior design"],["Note","Project from prior employment"]],
+      desc:"A corporate office building for the Muthoot Group at Kakkanad, Kochi.",
+      images:[{src:"assets/projects/muthoot-group/01.jpg", caption:"Building elevation"}]
+    },
+    "rmz-hsbc": {
+      title:"RMZ / HSBC Corporate Campus", location:"Bangalore", kicker:"Corporate & workplace", cat:"corporate-office",
+      specs:[["Client","RMZ / HSBC"],["Scope","Architecture, interior design"],["Note","Project from prior employment"]],
+      desc:"A corporate campus building for RMZ / HSBC in Bangalore.",
+      images:[{src:"assets/projects/rmz-hsbc/01.jpg", caption:"Entrance elevation"}]
+    },
+    "reliance-hitech-city": {
+      title:"Reliance Corporate Office", location:"Hi-Tech City, Hyderabad", kicker:"Corporate & workplace", cat:"corporate-office",
+      specs:[["Client","Reliance"],["Built-up","2,50,000 sft"],["Scope","Architecture, interior design"],["Note","Project from prior employment"]],
+      desc:"A corporate office building for Reliance at Hi-Tech City, Hyderabad.",
+      images:[
+        {src:"assets/projects/reliance-hitech-city/01.jpg", caption:"Building elevation"},
+        {src:"assets/projects/reliance-hitech-city/02.jpg", caption:"Alternate view"}
+      ]
+    },
+    "mather-smart-city-kochi": {
+      title:"Mather Premium Apartments", location:"Smart City, Kochi", kicker:"Residential · high-rise", cat:"highrise-apartment",
+      specs:[["Client","Mather"],["Site area","1.5 acres"],["Built-up","2,97,000 sft"]],
+      desc:"A premium high-rise apartment development for Mather in Smart City, Kochi.",
+      images:[{src:"assets/projects/mather-smart-city-kochi/01.jpg", caption:"Twin towers at dusk"}]
+    },
+    "artech-builders-trivandrum": {
+      title:"Artech Builders Apartments", location:"Trivandrum", kicker:"Residential · high-rise", cat:"highrise-apartment",
+      specs:[["Client","Artech Builders"],["Scope","Architecture & interior design"]],
+      desc:"A high-rise residential apartment development for Artech Builders in Trivandrum.",
+      images:[
+        {src:"assets/projects/artech-builders-trivandrum/01.jpg", caption:"Tower elevation, daytime"},
+        {src:"assets/projects/artech-builders-trivandrum/02.jpg", caption:"Tower elevation — alternate angle"},
+        {src:"assets/projects/artech-builders-trivandrum/03.jpg", caption:"Podium and parking block"}
+      ]
+    },
+    "heather-homes-trivandrum": {
+      title:"Heather Homes", location:"Trivandrum", kicker:"Residential · high-rise", cat:"highrise-apartment",
+      specs:[["Client","Heather Homes"],["Built-up","1,25,000 sft"]],
+      desc:"A high-rise residential apartment tower for Heather Homes in Trivandrum.",
+      images:[
+        {src:"assets/projects/heather-homes-trivandrum/01.jpg", caption:"Tower elevation, daytime"},
+        {src:"assets/projects/heather-homes-trivandrum/02.jpg", caption:"Twin towers, daytime"}
+      ]
+    },
+    "esteem-group-bangalore": {
+      title:"ESTEEM Group Apartments", location:"Bangalore", kicker:"Residential · high-rise", cat:"highrise-apartment",
+      specs:[["Client","ESTEEM Group"],["Built-up","2,00,000 sft"],["Note","Project from prior employment"]],
+      desc:"A high-rise residential apartment development for the ESTEEM Group in Bangalore.",
+      images:[{src:"assets/projects/esteem-group-bangalore/01.jpg", caption:"Tower elevation"}]
+    },
+    "prime-meridian-kochi": {
+      title:"Prime Meridian Apartments", location:"Kochi", kicker:"Residential · high-rise", cat:"highrise-apartment",
+      specs:[["Client","Prime Meridian"],["Built-up","2,25,000 sft"]],
+      desc:"A high-rise residential apartment development for Prime Meridian in Kochi.",
+      images:[{src:"assets/projects/prime-meridian-kochi/01.jpg", caption:"Tower elevation"}]
+    },
+    "century-i": {
+      title:"Century Apartments I", location:"Bangalore", kicker:"Residential · high-rise", cat:"highrise-apartment",
+      specs:[["Client","Century"],["Site area","1.5 acres"],["Built-up","2,00,000 sft"]],
+      desc:"A high-rise residential apartment development for Century in Bangalore.",
+      images:[
+        {src:"assets/projects/century-i/01.jpg", caption:"Courtyard garden and podium"},
+        {src:"assets/projects/century-i/02.jpg", caption:"Aerial view of the complex"}
+      ]
+    },
+    "century-ii": {
+      title:"Century Apartments II", location:"Bangalore", kicker:"Residential · high-rise", cat:"highrise-apartment",
+      specs:[["Client","Century"],["Site area","1.5 acres"],["Built-up","2,50,000 sft"]],
+      desc:"A second high-rise residential apartment development for Century in Bangalore.",
+      images:[{src:"assets/projects/century-ii/01.jpg", caption:"Tower with pool deck"}]
+    },
+    "jb-international-resort": {
+      title:"JB International Resort", location:"Nandi Hills", kicker:"Resort", cat:"other-projects",
+      specs:[["Client","JB International"],["Site area","1.5 acres"]],
+      desc:"A resort development for JB International at Nandi Hills, set within a landscaped water-garden master plan.",
+      images:[
+        {src:"assets/projects/jb-international-resort/01.jpg", caption:"Sunset view over the water garden"},
+        {src:"assets/projects/jb-international-resort/02.jpg", caption:"Landscape master plan"}
+      ]
+    },
+    "water-science-warehouse": {
+      title:"Water Science Warehouse", location:"Bangalore", kicker:"Warehouse", cat:"other-projects",
+      specs:[["Client","Water Science"],["Built-up","40,000 sft"]],
+      desc:"A warehouse facility for Water Science in Bangalore.",
+      images:[{src:"assets/projects/water-science-warehouse/01.jpg", caption:"Floor plan layout"}]
+    },
+    "clayworks": {
+      title:"Clayworks Workplace Interiors", location:"Bangalore", kicker:"Interiors · workplace", cat:"interiors",
+      specs:[["Client","Clayworks"],["Built-up","80,000 sft"],["Scope","Interior design"]],
+      desc:"Workplace interior design for Clayworks in Bangalore, spanning breakout lounges, informal meeting nooks and collaborative work settings.",
+      images:[
+        {src:"assets/projects/clayworks/01.jpg", caption:"Lounge seating with planting"},
+        {src:"assets/projects/clayworks/02.jpg", caption:"Swing seating and breakout bench"},
+        {src:"assets/projects/clayworks/03.jpg", caption:"Informal dining nook"},
+        {src:"assets/projects/clayworks/04.jpg", caption:"Reception lounge"}
+      ]
+    },
+    "dell-data-center": {
+      title:"DELL Technologies Data Center", location:"Bangalore", kicker:"Interiors · data center", cat:"interiors",
+      specs:[["Client","DELL Technologies"],["Built-up","1,00,000 sft"]],
+      desc:"A data-center interior fit-out for DELL Technologies in Bangalore.",
+      images:[{src:"assets/projects/dell-data-center/01.jpg", caption:"Server hall"}]
+    },
+    "interiors-showcase": {
+      title:"Workplace & Hospitality Interiors", location:"Bangalore & Kerala", kicker:"Interiors", cat:"interiors",
+      specs:null,
+      desc:"A selection of workplace and hospitality interior design across INK's project portfolio — meeting rooms, lounges, guest bedrooms and boardrooms.",
+      images:[
+        {src:"assets/projects/interiors-showcase/01.jpg", caption:"Meeting room"},
+        {src:"assets/projects/interiors-showcase/02.jpg", caption:"Lounge and bar area"},
+        {src:"assets/projects/interiors-showcase/03.jpg", caption:"Guest bedroom"},
+        {src:"assets/projects/interiors-showcase/04.jpg", caption:"Boardroom"},
+        {src:"assets/projects/interiors-showcase/05.jpg", caption:"Open-plan workspace"}
+      ]
     }
   };
 
@@ -879,6 +1006,24 @@ img{display:block; max-width:100%;}
       figc.appendChild(span);
       fig.appendChild(img); fig.appendChild(figc);
       gallery.appendChild(fig);
+    });
+  })();
+
+  // Portfolio category filters
+  (function initFilters(){
+    var filters=document.getElementById('filters');
+    if(!filters) return;
+    var buttons=Array.prototype.slice.call(filters.querySelectorAll('.filter'));
+    var items=Array.prototype.slice.call(document.querySelectorAll('.gitem'));
+    buttons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        buttons.forEach(function(b){ b.setAttribute('aria-pressed', b===btn ? 'true' : 'false'); });
+        var cat=btn.getAttribute('data-filter');
+        items.forEach(function(fig){
+          var cats=(fig.getAttribute('data-cat')||'').split(' ');
+          fig.style.display=(cat==='all'||cats.indexOf(cat)!==-1) ? '' : 'none';
+        });
+      });
     });
   })();
 
