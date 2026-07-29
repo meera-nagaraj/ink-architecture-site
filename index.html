@@ -343,10 +343,11 @@ img{display:block; max-width:100%;}
 .about__lead em{font-style:italic; color:var(--color-accent-ink);}
 .about__body{max-width:var(--measure); color:var(--color-muted); font-size:var(--text-md); display:grid; gap:var(--space-md);}
 .about__svc{font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-ink); margin-top:var(--space-xs);}
-.about__stats{margin-top:var(--space-3xl); display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:var(--space-lg) var(--space-xl);
-  border-top:var(--rule-hair) solid var(--color-rule); padding-top:var(--space-xl);}
-.about__stats .stat__n{color:var(--color-ink);}
-.about__stats .stat__l{color:var(--color-neutral);}
+.about__stats{margin-top:var(--space-md); display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--space-xl) var(--space-xl);
+  border-top:var(--rule-hair) solid var(--color-rule); padding-top:var(--space-xl); text-align:center;}
+.about__stats .stat__n{color:var(--color-ink); display:block;}
+.about__stats .stat__l{color:var(--color-neutral); display:block;}
+.about__location{font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.08em; text-transform:uppercase; color:var(--color-neutral); margin-top:var(--space-lg);}
 @media (max-width:860px){.about__grid{grid-template-columns:1fr; gap:var(--space-xl);}}
 @media (max-width:680px){.about__stats{grid-template-columns:repeat(2,minmax(0,1fr));}}
 
@@ -425,7 +426,6 @@ img{display:block; max-width:100%;}
 .about__subhead{display:block; margin-bottom:.5rem;}
 .about__headline{font-family:var(--font-display); font-weight:500; font-size:calc(var(--text-2xl) * 1.28); letter-spacing:-0.02em; line-height:1.15; margin:0;}
 .about__tagline{font-family:var(--font-display); font-style:italic; font-weight:300; font-size:var(--text-xl); color:var(--color-ink); opacity:.85; line-height:1.4; margin:0;}
-.about__stats-line{font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.08em; text-transform:uppercase; color:var(--color-neutral); border-top:var(--rule-hair) solid var(--color-rule); padding-top:var(--space-lg); margin-top:var(--space-sm);}
 
 /* Portfolio masonry */
 .work .wrap{max-width:1480px;}
@@ -569,7 +569,15 @@ img{display:block; max-width:100%;}
         <p class="about__tagline">Bespoke Architecture, Master Planning &amp; Interior Design for Developers, Corporates and Visionary Clients.</p>
         <p>With over 30 years of architectural leadership and 300+ completed projects, INK Architecture delivers thoughtful, sustainable and commercially successful design solutions across residential, commercial and mixed&#8209;use developments.</p>
         <p>From master plans and business parks to premium residences, corporate campuses and interiors, we partner closely with every client to transform ambitious ideas into timeless architecture.</p>
-        <p class="about__stats-line">300+ Projects Delivered &middot; 30+ Years of Experience &middot; Projects up to 500 Acres &middot; Bangalore | Kerala | International Experience</p>
+        <div class="about__stats">
+          <div class="stat"><div class="stat__n">30+</div><div class="stat__l">Years Experience</div></div>
+          <div class="stat"><div class="stat__n">300+</div><div class="stat__l">Completed Projects</div></div>
+          <div class="stat"><div class="stat__n">15+</div><div class="stat__l">Ongoing Projects</div></div>
+          <div class="stat"><div class="stat__n">500 Acres</div><div class="stat__l">Largest Project</div></div>
+          <div class="stat"><div class="stat__n">100+</div><div class="stat__l">Collective Years&rsquo; Experience</div></div>
+          <div class="stat"><div class="stat__n">10+</div><div class="stat__l">Team Size</div></div>
+        </div>
+        <p class="about__location">Bangalore &middot; Kerala &middot; International Experience</p>
       </div>
       <span class="vline"></span>
     </div>
