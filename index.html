@@ -704,30 +704,6 @@ img{display:block; max-width:100%;}
 
   // Portfolio data — cover image is images[0]; all images shown in the modal on click.
   var PROJECTS = {
-    "mariapps": {
-      title:"Mariapps Corporate Office", location:"Smart City, Kochi", kicker:"Corporate & workplace", cat:"corporate-office",
-      specs:[["Client","Mariapps (Germany)"],["Site area","1.5 acres"],["Built-up","2 lakh sft"],["Scope","Architecture, interior design, MEPF, C&S, landscape"]],
-      desc:"Mariapps is a German shipping-software company with a global presence. We designed their green-field campus in Smart City, Kochi — from site selection through to handover — as principal architect, covering the base building, workplace interiors and supporting infrastructure.",
-      images:[
-        {src:"assets/projects/mariapps/01.jpg", caption:"Dusk view along the main avenue"},
-        {src:"assets/projects/mariapps/02.jpg", caption:"Entrance canopy and drop-off, daytime"},
-        {src:"assets/projects/mariapps/03.jpg", caption:"Entrance canopy — alternate angle"},
-        {src:"assets/projects/mariapps/04.jpg", caption:"Night aerial view of the completed campus"},
-        {src:"assets/projects/mariapps/05.jpg", caption:"Entrance canopy — vertical elevation"},
-        {src:"assets/projects/mariapps/06.jpg", caption:"Daytime elevation with landscaped frontage"}
-      ]
-    },
-    "siri-industrial-park": {
-      title:"SIRI Industrial Park", location:"Belthangadi, Karnataka", kicker:"Industrial", cat:"other-projects",
-      specs:[["Client","SIRI, Dharmasthala"],["Site area","6.7 acres"],["Project size","1,00,000 sft"],["Role","Principal architect"]],
-      desc:"An industrial park for SIRI at Belthangadi, combining production and warehouse buildings with a landscaped entrance sequence and office block.",
-      images:[
-        {src:"assets/projects/siri-industrial-park/01.jpg", caption:"Entrance gate at dusk"},
-        {src:"assets/projects/siri-industrial-park/02.jpg", caption:"Main gate and signage, daytime"},
-        {src:"assets/projects/siri-industrial-park/03.jpg", caption:"Warehouse block with loading access"},
-        {src:"assets/projects/siri-industrial-park/04.jpg", caption:"Office block with landscaped terrace"}
-      ]
-    },
     "tata-sez-gopalpur": {
       title:"TATA Realty Industrial SEZ", location:"Gopalpur, Odisha", kicker:"Master planning", cat:"master-planning",
       specs:[["Client","TATA Realty"],["Site area","2,500 acres"],["Built-up","1 million sft (Phase 1)"],["Scope","Master plan report"]],
@@ -735,16 +711,6 @@ img{display:block; max-width:100%;}
       images:[
         {src:"assets/projects/tata-sez-gopalpur/01.jpg", caption:"Gateway structure at the SEZ entrance"},
         {src:"assets/projects/tata-sez-gopalpur/02.jpg", caption:"Aerial view of the master plan"}
-      ]
-    },
-    "grand-mall-kochi": {
-      title:"Grand Mall", location:"Kochi", kicker:"Leisure", cat:"other-projects",
-      specs:[["Client","Mukkadan Group"],["Site area","1 acre"],["Project size","1 lakh sft"],["Scope","Architecture, interior design"]],
-      desc:"A retail mall for the Mukkadan Group in Kochi, with a curved street-facing façade, landscaped rooftop terrace and multi-level retail floors.",
-      images:[
-        {src:"assets/projects/grand-mall-kochi/01.jpg", caption:"Street-facing elevation, daytime"},
-        {src:"assets/projects/grand-mall-kochi/02.jpg", caption:"Aerial perspective"},
-        {src:"assets/projects/grand-mall-kochi/03.jpg", caption:"Evening view"}
       ]
     },
     "villas-manipal": {
@@ -756,29 +722,6 @@ img{display:block; max-width:100%;}
         {src:"assets/projects/villas-manipal/02.jpg", caption:"Master site plan with villa typologies"}
       ]
     },
-    "apartments-karnataka": {
-      title:"Residential Apartment Towers", location:"Karnataka", kicker:"Residential", cat:"highrise-apartment",
-      specs:[["Scope","Architecture & interior design"]],
-      desc:"A high-rise residential development featuring landscaped podium amenities, a swimming-pool deck and multiple point towers.",
-      images:[
-        {src:"assets/projects/apartments-karnataka/01.jpg", caption:"Podium pool deck"},
-        {src:"assets/projects/apartments-karnataka/02.jpg", caption:"Twilight view of the towers"},
-        {src:"assets/projects/apartments-karnataka/03.jpg", caption:"Twilight view — alternate angle"},
-        {src:"assets/projects/apartments-karnataka/04.jpg", caption:"Sunset view of the complex"}
-      ]
-    },
-    "private-residences": {
-      title:"Private Residences", location:"Bangalore", kicker:"Residential · private houses", cat:"private-residences",
-      specs:[["Scope","Architecture & interior design"]],
-      desc:"A set of independent private residences designed for individual clients in Bangalore — including the residence for Mr. Shiv Prasad (10,000 sft), the residence for Mr. Venkat (2,500 sft), and Sanjeevani Homes (5,000 sft).",
-      images:[
-        {src:"assets/projects/private-residences/01.jpg", caption:"VD Residence — street elevation (design for Mr. Prasad)"},
-        {src:"assets/projects/private-residences/02.jpg", caption:"VD Residence — alternate elevation"},
-        {src:"assets/projects/private-residences/03.jpg", caption:"Private residence — street elevation"},
-        {src:"assets/projects/private-residences/04.jpg", caption:"Private residence — corner view"},
-        {src:"assets/projects/private-residences/05.jpg", caption:"Private residence — day and dusk views"}
-      ]
-    },
     "aroma-villas": {
       title:"Aroma Villas", location:"Karnataka", kicker:"Residential", cat:"villa-development",
       specs:[["Scope","Architecture & landscape design"]],
@@ -788,6 +731,17 @@ img{display:block; max-width:100%;}
         {src:"assets/projects/aroma-villas/02.jpg", caption:"Villa unit, dusk elevation"},
         {src:"assets/projects/aroma-villas/03.jpg", caption:"Villa unit, evening view"},
         {src:"assets/projects/aroma-villas/04.jpg", caption:"Aerial view of the villa community master plan"}
+      ]
+    },
+    "apartments-karnataka": {
+      title:"Residential Apartment Towers", location:"Karnataka", kicker:"Residential", cat:"highrise-apartment",
+      specs:[["Scope","Architecture & interior design"]],
+      desc:"A high-rise residential development featuring landscaped podium amenities, a swimming-pool deck and multiple point towers.",
+      images:[
+        {src:"assets/projects/apartments-karnataka/01.jpg", caption:"Podium pool deck"},
+        {src:"assets/projects/apartments-karnataka/02.jpg", caption:"Twilight view of the towers"},
+        {src:"assets/projects/apartments-karnataka/03.jpg", caption:"Twilight view — alternate angle"},
+        {src:"assets/projects/apartments-karnataka/04.jpg", caption:"Sunset view of the complex"}
       ]
     },
     "apartments-trivandrum-1": {
@@ -837,69 +791,6 @@ img{display:block; max-width:100%;}
       images:[
         {src:"assets/projects/low-rise-bangalore/01.jpg", caption:"Courtyard garden, daytime"},
         {src:"assets/projects/low-rise-bangalore/02.jpg", caption:"Courtyard garden, dusk"}
-      ]
-    },
-    "skyline-1": {
-      title:"Skyline Apartment Tower I", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
-      specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
-      desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
-      images:[{src:"assets/projects/skyline-1/01.jpg", caption:"Tower elevation at dusk"}]
-    },
-    "skyline-2": {
-      title:"Skyline Apartment Tower II", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
-      specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
-      desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
-      images:[{src:"assets/projects/skyline-2/01.jpg", caption:"Elevation, daytime"}]
-    },
-    "skyline-3": {
-      title:"Skyline Apartment Tower III", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
-      specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
-      desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
-      images:[
-        {src:"assets/projects/skyline-3/01.jpg", caption:"Tower elevation, daytime"},
-        {src:"assets/projects/skyline-3/02.jpg", caption:"Tower elevation, alternate angle"}
-      ]
-    },
-    "skyline-4": {
-      title:"Skyline Apartment Tower IV", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
-      specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
-      desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
-      images:[
-        {src:"assets/projects/skyline-4/01.jpg", caption:"Tower elevation, daytime"},
-        {src:"assets/projects/skyline-4/02.jpg", caption:"Tower elevation, alternate angle"}
-      ]
-    },
-    "skyline-5": {
-      title:"Skyline Apartment Tower V", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
-      specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
-      desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
-      images:[{src:"assets/projects/skyline-5/01.jpg", caption:"Tower elevation with landscaped frontage"}]
-    },
-    "skyline-6": {
-      title:"Skyline Apartment Tower VI", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
-      specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
-      desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
-      images:[{src:"assets/projects/skyline-6/01.jpg", caption:"Tower elevation at dusk"}]
-    },
-    "muthoot-group": {
-      title:"Muthoot Group Corporate Office", location:"Kakkanad, Kochi", kicker:"Corporate & workplace", cat:"corporate-office",
-      specs:[["Client","Muthoot Group"],["Scope","Architecture, interior design"],["Note","Project from prior employment"]],
-      desc:"A corporate office building for the Muthoot Group at Kakkanad, Kochi.",
-      images:[{src:"assets/projects/muthoot-group/01.jpg", caption:"Building elevation"}]
-    },
-    "rmz-hsbc": {
-      title:"RMZ / HSBC Corporate Campus", location:"Bangalore", kicker:"Corporate & workplace", cat:"corporate-office",
-      specs:[["Client","RMZ / HSBC"],["Scope","Architecture, interior design"],["Note","Project from prior employment"]],
-      desc:"A corporate campus building for RMZ / HSBC in Bangalore.",
-      images:[{src:"assets/projects/rmz-hsbc/01.jpg", caption:"Entrance elevation"}]
-    },
-    "reliance-hitech-city": {
-      title:"Reliance Corporate Office", location:"Hi-Tech City, Hyderabad", kicker:"Corporate & workplace", cat:"corporate-office",
-      specs:[["Client","Reliance"],["Built-up","2,50,000 sft"],["Scope","Architecture, interior design"],["Note","Project from prior employment"]],
-      desc:"A corporate office building for Reliance at Hi-Tech City, Hyderabad.",
-      images:[
-        {src:"assets/projects/reliance-hitech-city/01.jpg", caption:"Building elevation"},
-        {src:"assets/projects/reliance-hitech-city/02.jpg", caption:"Alternate view"}
       ]
     },
     "mather-smart-city-kochi": {
@@ -954,6 +845,103 @@ img{display:block; max-width:100%;}
       desc:"A second high-rise residential apartment development for Century in Bangalore.",
       images:[{src:"assets/projects/century-ii/01.jpg", caption:"Tower with pool deck"}]
     },
+    "skyline-1": {
+      title:"Skyline Apartment Tower I", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
+      specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
+      desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
+      images:[{src:"assets/projects/skyline-1/01.jpg", caption:"Tower elevation at dusk"}]
+    },
+    "skyline-2": {
+      title:"Skyline Apartment Tower II", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
+      specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
+      desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
+      images:[{src:"assets/projects/skyline-2/01.jpg", caption:"Elevation, daytime"}]
+    },
+    "skyline-3": {
+      title:"Skyline Apartment Tower III", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
+      specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
+      desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
+      images:[
+        {src:"assets/projects/skyline-3/01.jpg", caption:"Tower elevation, daytime"},
+        {src:"assets/projects/skyline-3/02.jpg", caption:"Tower elevation, alternate angle"}
+      ]
+    },
+    "skyline-4": {
+      title:"Skyline Apartment Tower IV", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
+      specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
+      desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
+      images:[
+        {src:"assets/projects/skyline-4/01.jpg", caption:"Tower elevation, daytime"},
+        {src:"assets/projects/skyline-4/02.jpg", caption:"Tower elevation, alternate angle"}
+      ]
+    },
+    "skyline-5": {
+      title:"Skyline Apartment Tower V", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
+      specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
+      desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
+      images:[{src:"assets/projects/skyline-5/01.jpg", caption:"Tower elevation with landscaped frontage"}]
+    },
+    "skyline-6": {
+      title:"Skyline Apartment Tower VI", location:"Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
+      specs:[["Client","Skyline Builders, Kochi"],["Scope","Architecture & interior design"]],
+      desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
+      images:[{src:"assets/projects/skyline-6/01.jpg", caption:"Tower elevation at dusk"}]
+    },
+    "mariapps": {
+      title:"Mariapps Corporate Office", location:"Smart City, Kochi", kicker:"Corporate & workplace", cat:"corporate-office",
+      specs:[["Client","Mariapps (Germany)"],["Site area","1.5 acres"],["Built-up","2 lakh sft"],["Scope","Architecture, interior design, MEPF, C&S, landscape"]],
+      desc:"Mariapps is a German shipping-software company with a global presence. We designed their green-field campus in Smart City, Kochi — from site selection through to handover — as principal architect, covering the base building, workplace interiors and supporting infrastructure.",
+      images:[
+        {src:"assets/projects/mariapps/01.jpg", caption:"Dusk view along the main avenue"},
+        {src:"assets/projects/mariapps/02.jpg", caption:"Entrance canopy and drop-off, daytime"},
+        {src:"assets/projects/mariapps/03.jpg", caption:"Entrance canopy — alternate angle"},
+        {src:"assets/projects/mariapps/04.jpg", caption:"Night aerial view of the completed campus"},
+        {src:"assets/projects/mariapps/05.jpg", caption:"Entrance canopy — vertical elevation"},
+        {src:"assets/projects/mariapps/06.jpg", caption:"Daytime elevation with landscaped frontage"}
+      ]
+    },
+    "muthoot-group": {
+      title:"Muthoot Group Corporate Office", location:"Kakkanad, Kochi", kicker:"Corporate & workplace", cat:"corporate-office",
+      specs:[["Client","Muthoot Group"],["Scope","Architecture, interior design"],["Note","Project from prior employment"]],
+      desc:"A corporate office building for the Muthoot Group at Kakkanad, Kochi.",
+      images:[{src:"assets/projects/muthoot-group/01.jpg", caption:"Building elevation"}]
+    },
+    "rmz-hsbc": {
+      title:"RMZ / HSBC Corporate Campus", location:"Bangalore", kicker:"Corporate & workplace", cat:"corporate-office",
+      specs:[["Client","RMZ / HSBC"],["Scope","Architecture, interior design"],["Note","Project from prior employment"]],
+      desc:"A corporate campus building for RMZ / HSBC in Bangalore.",
+      images:[{src:"assets/projects/rmz-hsbc/01.jpg", caption:"Entrance elevation"}]
+    },
+    "reliance-hitech-city": {
+      title:"Reliance Corporate Office", location:"Hi-Tech City, Hyderabad", kicker:"Corporate & workplace", cat:"corporate-office",
+      specs:[["Client","Reliance"],["Built-up","2,50,000 sft"],["Scope","Architecture, interior design"],["Note","Project from prior employment"]],
+      desc:"A corporate office building for Reliance at Hi-Tech City, Hyderabad.",
+      images:[
+        {src:"assets/projects/reliance-hitech-city/01.jpg", caption:"Building elevation"},
+        {src:"assets/projects/reliance-hitech-city/02.jpg", caption:"Alternate view"}
+      ]
+    },
+    "siri-industrial-park": {
+      title:"SIRI Industrial Park", location:"Belthangadi, Karnataka", kicker:"Industrial", cat:"other-projects",
+      specs:[["Client","SIRI, Dharmasthala"],["Site area","6.7 acres"],["Project size","1,00,000 sft"],["Role","Principal architect"]],
+      desc:"An industrial park for SIRI at Belthangadi, combining production and warehouse buildings with a landscaped entrance sequence and office block.",
+      images:[
+        {src:"assets/projects/siri-industrial-park/01.jpg", caption:"Entrance gate at dusk"},
+        {src:"assets/projects/siri-industrial-park/02.jpg", caption:"Main gate and signage, daytime"},
+        {src:"assets/projects/siri-industrial-park/03.jpg", caption:"Warehouse block with loading access"},
+        {src:"assets/projects/siri-industrial-park/04.jpg", caption:"Office block with landscaped terrace"}
+      ]
+    },
+    "grand-mall-kochi": {
+      title:"Grand Mall", location:"Kochi", kicker:"Leisure", cat:"other-projects",
+      specs:[["Client","Mukkadan Group"],["Site area","1 acre"],["Project size","1 lakh sft"],["Scope","Architecture, interior design"]],
+      desc:"A retail mall for the Mukkadan Group in Kochi, with a curved street-facing façade, landscaped rooftop terrace and multi-level retail floors.",
+      images:[
+        {src:"assets/projects/grand-mall-kochi/01.jpg", caption:"Street-facing elevation, daytime"},
+        {src:"assets/projects/grand-mall-kochi/02.jpg", caption:"Aerial perspective"},
+        {src:"assets/projects/grand-mall-kochi/03.jpg", caption:"Evening view"}
+      ]
+    },
     "jb-international-resort": {
       title:"JB International Resort", location:"Nandi Hills", kicker:"Resort", cat:"other-projects",
       specs:[["Client","JB International"],["Site area","1.5 acres"]],
@@ -996,6 +984,18 @@ img{display:block; max-width:100%;}
         {src:"assets/projects/interiors-showcase/03.jpg", caption:"Guest bedroom"},
         {src:"assets/projects/interiors-showcase/04.jpg", caption:"Boardroom"},
         {src:"assets/projects/interiors-showcase/05.jpg", caption:"Open-plan workspace"}
+      ]
+    },
+    "private-residences": {
+      title:"Private Residences", location:"Bangalore", kicker:"Residential · private houses", cat:"private-residences",
+      specs:[["Scope","Architecture & interior design"]],
+      desc:"A set of independent private residences designed for individual clients in Bangalore — including the residence for Mr. Shiv Prasad (10,000 sft), the residence for Mr. Venkat (2,500 sft), and Sanjeevani Homes (5,000 sft).",
+      images:[
+        {src:"assets/projects/private-residences/01.jpg", caption:"VD Residence — street elevation (design for Mr. Prasad)"},
+        {src:"assets/projects/private-residences/02.jpg", caption:"VD Residence — alternate elevation"},
+        {src:"assets/projects/private-residences/03.jpg", caption:"Private residence — street elevation"},
+        {src:"assets/projects/private-residences/04.jpg", caption:"Private residence — corner view"},
+        {src:"assets/projects/private-residences/05.jpg", caption:"Private residence — day and dusk views"}
       ]
     }
   };
