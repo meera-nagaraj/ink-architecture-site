@@ -1,0 +1,4 @@
+all projects/
+.git/
+.gitignore
+README.txt
