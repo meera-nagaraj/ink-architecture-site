@@ -455,13 +455,16 @@ img{display:block; max-width:100%;}
 .gitem__img{width:100%; height:auto; display:block; filter:grayscale(0.5) saturate(0.9); transition:transform .6s var(--ease-out), filter .55s var(--ease-out);}
 .gitem::after{content:""; position:absolute; inset:0; pointer-events:none;
   background:linear-gradient(180deg, transparent 42%, color-mix(in oklch, var(--color-ink) 80%, transparent));
-  opacity:0; transition:opacity .4s var(--ease-out);}
+  opacity:1; transition:opacity .4s var(--ease-out);}
 .gitem__name{position:absolute; left:1.1rem; right:1.1rem; bottom:1rem; z-index:2; color:#fff;
+  display:grid; gap:.3rem;
   font-family:var(--font-display); font-style:italic; font-size:var(--text-lg); line-height:1.2;
-  opacity:0; transform:translateY(10px); transition:opacity .4s var(--ease-out), transform .4s var(--ease-out);}
+  opacity:1; transform:none; transition:opacity .4s var(--ease-out), transform .4s var(--ease-out);}
+.gitem__client{font-family:var(--font-mono); font-style:normal; font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--color-muted-rev);}
+.gitem__desc{font-family:var(--font-body); font-style:normal; font-size:.78rem; line-height:1.35; color:var(--color-muted-rev); display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:3; overflow:hidden;}
 .gitem:hover .gitem__img, .gitem:focus-visible .gitem__img{transform:scale(1.05); filter:grayscale(0);}
 .gitem:hover::after, .gitem:focus-visible::after{opacity:1;}
-.gitem:hover .gitem__name, .gitem:focus-visible .gitem__name{opacity:1; transform:none;}
+.gitem:hover .gitem__name, .gitem:focus-visible .gitem__name{transform:translateY(-2px);}
 .gitem:focus-visible{outline:2px solid var(--color-focus); outline-offset:3px;}
 
 /* Detail modal */
@@ -1204,6 +1207,18 @@ img{display:block; max-width:100%;}
       var figc=document.createElement('figcaption'); figc.className='gitem__name';
       var span=document.createElement('span'); span.textContent=p.title+(p.location?' — '+p.location:'');
       figc.appendChild(span);
+      var client=p.client;
+      if(!client && p.specs){
+        p.specs.some(function(spec){ if(spec[0].toLowerCase()==='client'){ client=spec[1]; return true; } return false; });
+      }
+      if(client){
+        var clientEl=document.createElement('span'); clientEl.className='gitem__client'; clientEl.textContent='Client · '+client;
+        figc.appendChild(clientEl);
+      }
+      if(p.desc){
+        var desc=document.createElement('span'); desc.className='gitem__desc'; desc.textContent=p.desc;
+        figc.appendChild(desc);
+      }
       fig.appendChild(img); fig.appendChild(figc);
       gallery.appendChild(fig);
     });
