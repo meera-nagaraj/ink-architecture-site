@@ -605,34 +605,38 @@ img{display:block; max-width:100%;}
   <section class="categories" id="categories">
     <div class="wrap">
       <div class="snum"><span class="snum__n">02</span><span class="snum__t">categories</span></div>
-      <p class="categories__intro">Seven practice areas, one design philosophy &mdash; from the master plan to the interior within it.</p>
+      <p class="categories__intro">Eight practice areas, one design philosophy &mdash; from the master plan to the interior within it.</p>
       <div class="cat-grid">
         <a class="cat-card io" href="#portfolio" data-filter="master-planning">
-          <div class="cat-card__img"><img src="assets/projects/tata-sez-gopalpur/02.jpg" alt="Master Planning" loading="lazy"></div>
+          <div class="cat-card__img"><img src="assets/portfolio/master-planning/tata-realty/03.png" alt="Master Planning" loading="lazy"></div>
           <span class="cat-card__name">Master Planning</span>
         </a>
         <a class="cat-card io" href="#portfolio" data-filter="villa-development">
-          <div class="cat-card__img"><img src="assets/projects/apartments-karnataka/02.jpg" alt="Villa Development" loading="lazy"></div>
+          <div class="cat-card__img"><img src="assets/portfolio/villa-development/premier-builders-udupi/03.png" alt="Villa Development" loading="lazy"></div>
           <span class="cat-card__name">Villa Development</span>
         </a>
         <a class="cat-card io" href="#portfolio" data-filter="highrise-apartment">
-          <div class="cat-card__img"><img src="assets/projects/apartments-bangalore/03.jpg" alt="Highrise Apartment" loading="lazy"></div>
+          <div class="cat-card__img"><img src="assets/portfolio/highrise-apartment/skyline-builders-kochi/03.png" alt="Highrise Apartment" loading="lazy"></div>
           <span class="cat-card__name">Highrise Apartment</span>
         </a>
+        <a class="cat-card io" href="#portfolio" data-filter="premium-apartment">
+          <div class="cat-card__img"><img src="assets/portfolio/premium-apartment/mather-smart-city-kochi/01.png" alt="Premium Apartment" loading="lazy"></div>
+          <span class="cat-card__name">Premium Apartment</span>
+        </a>
         <a class="cat-card io" href="#portfolio" data-filter="corporate-office">
-          <div class="cat-card__img"><img src="assets/projects/mariapps/04.jpg" alt="Corporate Office" loading="lazy" style="object-position:62% center"></div>
+          <div class="cat-card__img"><img src="assets/portfolio/corporate-office/mariapps-smart-city-kochi/03.png" alt="Corporate Office" loading="lazy" style="object-position:62% center"></div>
           <span class="cat-card__name">Corporate Office</span>
         </a>
         <a class="cat-card io" href="#portfolio" data-filter="other-projects">
-          <div class="cat-card__img"><img src="assets/projects/grand-mall-kochi/01.jpg" alt="Other Projects" loading="lazy"></div>
+          <div class="cat-card__img"><img src="assets/portfolio/other-projects/mukkadan-group/01.png" alt="Other Projects" loading="lazy"></div>
           <span class="cat-card__name">Other Projects</span>
         </a>
         <a class="cat-card io" href="#portfolio" data-filter="interiors">
-          <div class="cat-card__img"><img src="assets/projects/interiors-showcase/02.jpg" alt="Interiors" loading="lazy"></div>
+          <div class="cat-card__img"><img src="assets/portfolio/interiors/clayworks/03.png" alt="Interiors" loading="lazy"></div>
           <span class="cat-card__name">Interiors</span>
         </a>
         <a class="cat-card io" href="#portfolio" data-filter="private-residences">
-          <div class="cat-card__img"><img src="assets/projects/private-residences/01.jpg" alt="Private Residences" loading="lazy"></div>
+          <div class="cat-card__img"><img src="assets/portfolio/private-residences/01.png" alt="Private Residences" loading="lazy"></div>
           <span class="cat-card__name">Private Residences</span>
         </a>
       </div>
@@ -647,6 +651,7 @@ img{display:block; max-width:100%;}
         <button class="filter" type="button" data-filter="master-planning" aria-pressed="false">Master Planning</button>
         <button class="filter" type="button" data-filter="villa-development" aria-pressed="false">Villa Development</button>
         <button class="filter" type="button" data-filter="highrise-apartment" aria-pressed="false">Highrise Apartment</button>
+        <button class="filter" type="button" data-filter="premium-apartment" aria-pressed="false">Premium Apartment</button>
         <button class="filter" type="button" data-filter="corporate-office" aria-pressed="false">Corporate Office</button>
         <button class="filter" type="button" data-filter="other-projects" aria-pressed="false">Other Projects</button>
         <button class="filter" type="button" data-filter="interiors" aria-pressed="false">Interiors</button>
@@ -751,6 +756,7 @@ img{display:block; max-width:100%;}
 </a>
 
 
+<script src="portfolio-data.js"></script>
 <script>
 (function(){
   var nav = document.getElementById('nav');
@@ -759,7 +765,7 @@ img{display:block; max-width:100%;}
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Portfolio data — cover image is images[0]; all images shown in the modal on click.
-  var PROJECTS = {
+  var LEGACY_PROJECTS = {
     "tata-sez-gopalpur": {
       title:"TATA Realty Industrial SEZ", location:"Gopalpur, Odisha", kicker:"Master planning", cat:"master-planning",
       specs:[["Client","TATA Realty"],["Site area","2,500 acres"],["Built-up","1 million sft (Phase 1)"],["Scope","Master plan report"]],
@@ -1181,6 +1187,7 @@ img{display:block; max-width:100%;}
       ]
     }
   };
+  var PROJECTS = window.INK_PROJECTS || LEGACY_PROJECTS;
 
   // Render one gallery card per project — cover image only; remaining images + captions open in the modal.
   (function renderGallery(){
