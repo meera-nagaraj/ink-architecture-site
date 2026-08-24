@@ -177,7 +177,8 @@ img{display:block; max-width:100%;}
 /* ============ CATEGORIES — static grid, above portfolio ============ */
 .categories{padding:var(--space-lg) 0 var(--space-2xl);}
 .categories__intro{max-width:52ch; margin:0 auto var(--space-2xl); text-align:center; color:var(--color-muted); font-size:var(--text-md);}
-.cat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:var(--space-lg);}
+.cat-grid{display:flex; flex-wrap:wrap; justify-content:center; gap:var(--space-lg);}
+.cat-card{flex:0 1 calc((100% - (3 * var(--space-lg))) / 4);}
 .cat-card{position:relative; display:block; overflow:clip; border-radius:2px; background:var(--color-stone);}
 .cat-card__img{position:relative; aspect-ratio:4/5; overflow:clip;}
 .cat-card__img img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
@@ -188,8 +189,8 @@ img{display:block; max-width:100%;}
   font-family:var(--font-display); font-style:italic; font-size:var(--text-lg); line-height:1.2;}
 .cat-card:hover .cat-card__img img, .cat-card:focus-visible .cat-card__img img{transform:scale(1.05); filter:grayscale(0);}
 .cat-card:focus-visible{outline:2px solid var(--color-focus); outline-offset:3px;}
-@media (max-width:980px){.cat-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:560px){.cat-grid{grid-template-columns:1fr;}}
+@media (max-width:980px){.cat-card{flex-basis:calc((100% - var(--space-lg)) / 2);}}
+@media (max-width:560px){.cat-card{flex-basis:100%;}}
 @media (prefers-reduced-motion:reduce){.cat-card__img img{transition:none;}}
 
 /* ============ WORK — Portfolio Grid ============ */
@@ -618,13 +619,9 @@ img{display:block; max-width:100%;}
           <div class="cat-card__img"><img src="assets/portfolio/villa-development/aroma-trivandrum/03.png" alt="Villa Development" loading="lazy"></div>
           <span class="cat-card__name">Villa Development</span>
         </a>
-        <a class="cat-card io" href="#portfolio" data-filter="highrise-apartment">
-          <div class="cat-card__img"><img src="assets/portfolio/highrise-apartment/skyline-builders-kochi/03.png" alt="Highrise Apartment" loading="lazy"></div>
-          <span class="cat-card__name">Highrise Apartment</span>
-        </a>
-        <a class="cat-card io" href="#portfolio" data-filter="premium-apartment">
-          <div class="cat-card__img"><img src="assets/portfolio/premium-apartment/mather-smart-city-kochi/01.png" alt="Premium Apartment" loading="lazy"></div>
-          <span class="cat-card__name">Premium Apartment</span>
+        <a class="cat-card io" href="#portfolio" data-filter="apartments">
+          <div class="cat-card__img"><img src="assets/portfolio/premium-apartment/mather-smart-city-kochi/01.png" alt="Apartments" loading="lazy"></div>
+          <span class="cat-card__name">Apartments</span>
         </a>
         <a class="cat-card io" href="#portfolio" data-filter="corporate-office">
           <div class="cat-card__img"><img src="assets/portfolio/corporate-office/mariapps-smart-city-kochi/03.png" alt="Corporate Office" loading="lazy" style="object-position:62% center"></div>
@@ -653,8 +650,7 @@ img{display:block; max-width:100%;}
         <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
         <button class="filter" type="button" data-filter="master-planning" aria-pressed="false">Master Planning</button>
         <button class="filter" type="button" data-filter="villa-development" aria-pressed="false">Villa Development</button>
-        <button class="filter" type="button" data-filter="highrise-apartment" aria-pressed="false">Highrise Apartment</button>
-        <button class="filter" type="button" data-filter="premium-apartment" aria-pressed="false">Premium Apartment</button>
+        <button class="filter" type="button" data-filter="apartments" aria-pressed="false">Apartments</button>
         <button class="filter" type="button" data-filter="corporate-office" aria-pressed="false">Corporate Office</button>
         <button class="filter" type="button" data-filter="interiors" aria-pressed="false">Interiors</button>
         <button class="filter" type="button" data-filter="private-residences" aria-pressed="false">Private Residences</button>
@@ -779,7 +775,7 @@ img{display:block; max-width:100%;}
       ]
     },
     "aroma-villas": {
-      title:"Aroma Villas", location:"Trivandrum", kicker:"Master planning & villas", cat:"master-planning villa-development highrise-apartment",
+      title:"Aroma Villas", location:"Trivandrum", kicker:"Master planning & villas", cat:"master-planning villa-development apartments",
       specs:[["Client","AROMA"],["Site area","30 acres"],["Units","200 villas"],["Scope","Master plan, villas, clubhouse"]],
       desc:"A 30-acre, 200-villa master-planned community named Aroma Villas at Trivandrum for client AROMA, combining a clubhouse, pool and landscaped grounds within a curved master plan.",
       images:[
@@ -821,7 +817,7 @@ img{display:block; max-width:100%;}
       ]
     },
     "apartments-trivandrum-1": {
-      title:"High-Rise Apartments", location:"Trivandrum", kicker:"Residential", cat:"highrise-apartment",
+      title:"High-Rise Apartments", location:"Trivandrum", kicker:"Residential", cat:"apartments",
       specs:null,
       desc:"A high-rise residential apartment tower in Trivandrum, featuring landscaped balconies and a contemporary brick-and-stone façade.",
       images:[
@@ -830,7 +826,7 @@ img{display:block; max-width:100%;}
       ]
     },
     "apartments-trivandrum-2": {
-      title:"High-Rise Apartments II", location:"Trivandrum", kicker:"Residential", cat:"highrise-apartment",
+      title:"High-Rise Apartments II", location:"Trivandrum", kicker:"Residential", cat:"apartments",
       specs:null,
       desc:"A twin-tower high-rise residential development in Trivandrum.",
       images:[
@@ -839,7 +835,7 @@ img{display:block; max-width:100%;}
       ]
     },
     "apartments-bangalore": {
-      title:"High-Rise Apartments", location:"Bangalore", kicker:"Residential", cat:"highrise-apartment",
+      title:"High-Rise Apartments", location:"Bangalore", kicker:"Residential", cat:"apartments",
       specs:null,
       desc:"A high-rise residential development in Bangalore with landscaped podium gardens and a central pool deck.",
       images:[
@@ -850,7 +846,7 @@ img{display:block; max-width:100%;}
       ]
     },
     "apartments-kochi": {
-      title:"High-Rise Apartments", location:"Kochi", kicker:"Residential", cat:"highrise-apartment",
+      title:"High-Rise Apartments", location:"Kochi", kicker:"Residential", cat:"apartments",
       specs:null,
       desc:"A pair of high-rise residential towers in Kochi set along the waterfront, with landscaped grounds and a riverside promenade.",
       images:[
@@ -861,7 +857,7 @@ img{display:block; max-width:100%;}
       ]
     },
     "low-rise-bangalore": {
-      title:"Low-Rise Apartments", location:"Bangalore", kicker:"Residential", cat:"highrise-apartment",
+      title:"Low-Rise Apartments", location:"Bangalore", kicker:"Residential", cat:"apartments",
       specs:null,
       desc:"A low-rise apartment community in Bangalore organised around a central landscaped courtyard.",
       images:[
@@ -870,13 +866,13 @@ img{display:block; max-width:100%;}
       ]
     },
     "mather-smart-city-kochi": {
-      title:"Mather Premium Apartments", location:"Smart City, Kochi", kicker:"Residential · high-rise", cat:"highrise-apartment",
+      title:"Mather Premium Apartments", location:"Smart City, Kochi", kicker:"Residential · high-rise", cat:"apartments",
       specs:[["Client","Mather"],["Site area","1.5 acres"],["Built-up","2,97,000 sft"]],
       desc:"A premium high-rise apartment development for Mather in Smart City, Kochi.",
       images:[{src:"assets/projects/mather-smart-city-kochi/01.jpg", caption:"Twin towers at dusk"}]
     },
     "artech-builders-trivandrum": {
-      title:"Artech Builders Apartments", location:"Trivandrum", kicker:"Residential · high-rise", cat:"highrise-apartment",
+      title:"Artech Builders Apartments", location:"Trivandrum", kicker:"Residential · high-rise", cat:"apartments",
       specs:[["Client","Artech Builders"],["Scope","Architecture & interior design"]],
       desc:"A high-rise residential apartment development for Artech Builders in Trivandrum.",
       images:[
@@ -886,7 +882,7 @@ img{display:block; max-width:100%;}
       ]
     },
     "heather-homes-trivandrum": {
-      title:"Heather Homes", location:"Trivandrum", kicker:"Residential · high-rise", cat:"highrise-apartment",
+      title:"Heather Homes", location:"Trivandrum", kicker:"Residential · high-rise", cat:"apartments",
       specs:[["Client","Heather Homes"],["Built-up","1,25,000 sft"]],
       desc:"A high-rise residential apartment tower for Heather Homes in Trivandrum.",
       images:[
@@ -895,19 +891,19 @@ img{display:block; max-width:100%;}
       ]
     },
     "esteem-group-bangalore": {
-      title:"ESTEEM Group Apartments", location:"Bangalore", kicker:"Residential · high-rise", cat:"highrise-apartment",
+      title:"ESTEEM Group Apartments", location:"Bangalore", kicker:"Residential · high-rise", cat:"apartments",
       specs:[["Client","ESTEEM Group"],["Built-up","2,00,000 sft"],["Note","Project from prior employment"]],
       desc:"A high-rise residential apartment development for the ESTEEM Group in Bangalore.",
       images:[{src:"assets/projects/esteem-group-bangalore/01.jpg", caption:"Tower elevation"}]
     },
     "prime-meridian-kochi": {
-      title:"Prime Meridian Apartments", location:"Kochi", kicker:"Residential · high-rise", cat:"highrise-apartment",
+      title:"Prime Meridian Apartments", location:"Kochi", kicker:"Residential · high-rise", cat:"apartments",
       specs:[["Client","Prime Meridian"],["Built-up","2,25,000 sft"]],
       desc:"A high-rise residential apartment development for Prime Meridian in Kochi.",
       images:[{src:"assets/projects/prime-meridian-kochi/01.jpg", caption:"Tower elevation"}]
     },
     "century-i": {
-      title:"Century Apartments I", location:"Bangalore", kicker:"Residential · high-rise", cat:"highrise-apartment",
+      title:"Century Apartments I", location:"Bangalore", kicker:"Residential · high-rise", cat:"apartments",
       specs:[["Client","Century"],["Site area","1.5 acres"],["Built-up","2,00,000 sft"]],
       desc:"A high-rise residential apartment development for Century in Bangalore.",
       images:[
@@ -916,19 +912,19 @@ img{display:block; max-width:100%;}
       ]
     },
     "century-ii": {
-      title:"Century Apartments II", location:"Bangalore", kicker:"Residential · high-rise", cat:"highrise-apartment",
+      title:"Century Apartments II", location:"Bangalore", kicker:"Residential · high-rise", cat:"apartments",
       specs:[["Client","Century"],["Site area","1.5 acres"],["Built-up","2,50,000 sft"]],
       desc:"A second high-rise residential apartment development for Century in Bangalore.",
       images:[{src:"assets/projects/century-ii/01.jpg", caption:"Tower with pool deck"}]
     },
     "century-iii": {
-      title:"Century Apartments III", location:"Bangalore", kicker:"Residential · high-rise", cat:"highrise-apartment",
+      title:"Century Apartments III", location:"Bangalore", kicker:"Residential · high-rise", cat:"apartments",
       specs:[["Client","Century"],["Site area","1.5 acres"],["Built-up","2,00,000 sft"]],
       desc:"A third high-rise residential apartment development for Century in Bangalore.",
       images:[{src:"assets/projects/century-iii/01.jpg", caption:"Aerial view with pool deck"}]
     },
     "skyline-3": {
-      title:"Skyline Apartment Tower — Trivandrum", location:"Trivandrum, Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
+      title:"Skyline Apartment Tower — Trivandrum", location:"Trivandrum, Kerala", kicker:"Residential · Skyline Builders", cat:"apartments",
       specs:[["Client","Skyline Builders, Kochi"],["Site area","1.2 acres"],["Built-up","1,70,000 sft"],["Scope","Architecture & interior design"]],
       desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
       images:[
@@ -937,31 +933,31 @@ img{display:block; max-width:100%;}
       ]
     },
     "skyline-5": {
-      title:"Skyline Apartment Tower — Kochi I", location:"Kochi, Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
+      title:"Skyline Apartment Tower — Kochi I", location:"Kochi, Kerala", kicker:"Residential · Skyline Builders", cat:"apartments",
       specs:[["Client","Skyline Builders, Kochi"],["Site area","0.8 acres"],["Built-up","1,35,000 sft"],["Scope","Architecture & interior design"]],
       desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
       images:[{src:"assets/projects/skyline-5/01.jpg", caption:"Tower elevation with landscaped frontage"}]
     },
     "skyline-1": {
-      title:"Skyline Apartment Tower — Calicut I", location:"Calicut, Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
+      title:"Skyline Apartment Tower — Calicut I", location:"Calicut, Kerala", kicker:"Residential · Skyline Builders", cat:"apartments",
       specs:[["Client","Skyline Builders, Kochi"],["Site area","1.0 acre"],["Built-up","1,40,000 sft"],["Scope","Architecture & interior design"]],
       desc:"Part of INK's ongoing residential portfolio for Skyline Builders across Kerala.",
       images:[{src:"assets/projects/skyline-1/01.jpg", caption:"Tower elevation, dusk"}]
     },
     "skyline-2": {
-      title:"Skyline Apartment Tower — Kochi II", location:"Kochi, Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
+      title:"Skyline Apartment Tower — Kochi II", location:"Kochi, Kerala", kicker:"Residential · Skyline Builders", cat:"apartments",
       specs:[["Client","Skyline Builders, Kochi"],["Site area","0.5 acres"],["Built-up","40,000 sft"],["Note","Project from prior employment"]],
       desc:"Part of INK's residential portfolio for Skyline Builders across Kerala.",
       images:[{src:"assets/projects/skyline-2/01.jpg", caption:"Tower elevation, street level"}]
     },
     "skyline-7": {
-      title:"Skyline Apartment Tower — Calicut II", location:"Calicut, Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
+      title:"Skyline Apartment Tower — Calicut II", location:"Calicut, Kerala", kicker:"Residential · Skyline Builders", cat:"apartments",
       specs:[["Client","Skyline Builders, Kochi"],["Site area","0.6 acres"],["Built-up","70,000 sft"],["Note","Project from prior employment"]],
       desc:"Part of INK's residential portfolio for Skyline Builders across Kerala.",
       images:[{src:"assets/projects/skyline-7/01.jpg", caption:"Tower elevation, daytime"}]
     },
     "skyline-4": {
-      title:"Skyline Apartment Tower — Trissur", location:"Trissur, Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
+      title:"Skyline Apartment Tower — Trissur", location:"Trissur, Kerala", kicker:"Residential · Skyline Builders", cat:"apartments",
       specs:[["Client","Skyline Builders, Kochi"],["Site area","1.1 acres"],["Built-up","1,60,000 sft"],["Note","Project from prior employment"]],
       desc:"Part of INK's residential portfolio for Skyline Builders across Kerala.",
       images:[
@@ -970,7 +966,7 @@ img{display:block; max-width:100%;}
       ]
     },
     "skyline-6": {
-      title:"Skyline Apartment Tower — Kochi III", location:"Kochi, Kerala", kicker:"Residential · Skyline Builders", cat:"highrise-apartment",
+      title:"Skyline Apartment Tower — Kochi III", location:"Kochi, Kerala", kicker:"Residential · Skyline Builders", cat:"apartments",
       specs:[["Client","Skyline Builders, Kochi"],["Site area","1.2 acres"],["Built-up","1,70,000 sft"],["Note","Project from prior employment"]],
       desc:"Part of INK's residential portfolio for Skyline Builders across Kerala.",
       images:[{src:"assets/projects/skyline-6/01.jpg", caption:"Tower elevation at dusk"}]
